@@ -1,0 +1,65 @@
+.call-to-action {
+  background: url('/images/meat\ cut.jpg') center/cover no-repeat, linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.call-to-action h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+  color: #fff;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.call-to-action button {
+  padding: 16px 32px;
+  background-color: #ff4141;
+  color: white;
+  border: none;
+  border-radius: 40px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  letter-spacing: 1.2px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.call-to-action button:hover {
+  background-color: #e55337;
+  transform: scale(1.08);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.call-to-action button:focus {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .call-to-action h2 {
+    font-size: 2.5rem;
+  }
+
+  .call-to-action button {
+    font-size: 1.1rem;
+    padding: 14px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .call-to-action h2 {
+    font-size: 2rem;
+  }
+
+  .call-to-action button {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+  }
+}

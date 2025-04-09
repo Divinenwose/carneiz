@@ -1,0 +1,52 @@
+.admin-orders-page {
+    padding: 2rem;
+  }
+  
+  .admin-order-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  
+  .order-top {
+    display: flex;
+    gap: 1rem;
+    width: 150%;
+  }
+  
+  .order-top img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .order-details {
+    flex-grow: 2;
+  }
+  
+  .order-details p {
+    margin: 4px 0;
+    width: 60%;
+  }
+  
+  .order-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+  
+  .order-meta select {
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background-color: #ffeaea;
+    cursor: pointer;
+    outline: none;
+  }
+  

@@ -1,0 +1,117 @@
+/* Centered Auth Container */
+.auth-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 10vh;
+  margin: 200px auto;
+  transition: transform 0.3s ease;
+}
+
+/* Header */
+.auth-container h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Form Styles */
+.auth-container .auth-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.auth-container .auth-form input {
+  padding: 14px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.auth-form input:focus {
+  border-color: #ff4141;
+  box-shadow: 0 0 10px rgba(255, 65, 65, 0.4);
+  outline: none;
+}
+
+.auth-form input::placeholder {
+  color: #bbb;
+}
+
+/* Button Styles */
+.auth-form button {
+  padding: 14px;
+  background-color: #ff4141;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease;
+  margin-top: 15px;
+}
+
+.auth-container .auth-form button:hover {
+  background-color: #e33c3c;
+  transform: translateY(-2px);
+}
+
+.auth-container .auth-form button:active {
+  transform: translateY(1px);
+}
+
+/* Toggle Link */
+.auth-toggle-text {
+  font-size: 14px;
+  color: #777;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.auth-toggle-btn {
+  background-color: transparent;
+  border: none;
+  color: #ff4141;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.auth-toggle-btn:hover {
+  color: #e33c3c;
+}
+
+
+/* Animation for Success/Error Messages */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Hover/Focus Effects */
+.auth-form input:focus,
+.auth-form button:hover {
+  transform: translateY(-3px);
+}
+
+.auth-container:hover {
+  transform: scale(1.02);
+}

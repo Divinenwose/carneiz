@@ -1,0 +1,182 @@
+.my-orders {
+  padding: 40px 70px;
+  background-color: #fff;
+  min-height: 100vh;
+  margin-top: 190px;
+}
+
+.my-orders h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.orders-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.order-image img {
+  width: 60px;
+  height: 60px;
+}
+
+.order-info {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.order-info h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.order-info p {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.status {
+  font-size: 14px;
+  color: #ff4c4c;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #ff4c4c;
+  border-radius: 50%;
+}
+
+.track-btn {
+  background-color: #ffeef0;
+  color: #ff4c4c;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.track-btn:hover {
+  background-color: #ffd5d9;
+}
+
+.progress-tracker {
+  display: flex;
+  gap: 1rem;
+  margin-top: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+.step-icon {
+  font-size: 1.5rem;
+}
+
+.step-label {
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .my-orders {
+    padding: 30px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .my-orders {
+    padding: 20px;
+    margin-top: 120px;
+  }
+
+  .order-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .order-image img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .order-info {
+    margin-left: 0;
+  }
+
+  .track-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .progress-tracker {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .step-label {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .my-orders h2 {
+    font-size: 22px;
+    margin-top: 160px;
+  }
+
+  .order-info h3 {
+    font-size: 14px;
+  }
+
+  .order-info p,
+  .status {
+    font-size: 12px;
+  }
+
+  .step-icon {
+    font-size: 1.2rem;
+  }
+
+  .step-label {
+    font-size: 0.6rem;
+  }
+
+  .track-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+

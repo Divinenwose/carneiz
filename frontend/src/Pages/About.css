@@ -1,0 +1,257 @@
+.about-banner {
+  background-image: url('../../public/images/image1.png'); 
+  background-size: cover;
+  background-position: center;
+  padding: 110px 20px;
+  text-align: center;
+  color: #fff;
+  height: auto;
+  margin-top: 120px;
+}
+
+.about-banner-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 70px;
+  color: #ff4141; 
+  text-align: center;
+}
+
+.about-banner-content p {
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+
+.company-description {
+  background: linear-gradient(135deg, #fff, #f9f9f9); 
+  padding: 30px 20px;
+  text-align: center;
+  border-radius: 10px; 
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
+  margin: 50px auto;
+  max-width: 900px; 
+}
+
+.company-description h2 {
+  font-size: 2.8rem; 
+  font-weight: bold;
+  color: #ff4141; 
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.company-description p {
+  font-size: 1.2rem; 
+  color: #444; 
+  line-height: 1.8; 
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.company-description .accent-line {
+  display: inline-block;
+  width: 50px;
+  height: 4px;
+  background-color: #ff4141; 
+  margin: 5px 0 30px;
+  border-radius: 2px;
+}
+
+.walk-in-store {
+  background: linear-gradient(135deg, #fff, #f9f9f9);
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 50px auto;
+  max-width: 800px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
+}
+
+.walk-in-store h2 {
+  font-size: 2.5rem;
+  color: #ff4141;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.walk-in-store p {
+  font-size: 1.2rem;
+  color: #444;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.walk-in-store .store-icon {
+  margin-top: 30px;
+}
+
+.walk-in-store .store-icon img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%; 
+  border: 4px solid #ff4141;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.walk-in-store .store-icon img:hover {
+  transform: scale(1.1); 
+}
+
+
+.why-choose-section {
+  background-color: #f9f9f9;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.why-choose-section h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.choose-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.choose-item {
+  background-color: transparent;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 320px;
+  height: 450px;
+}
+
+.choose-icon img {
+  width: 320px;
+  height: 270px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.choose-item h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.choose-item p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.team-section {
+background-color: #ff4141; 
+padding: 60px 20px;
+text-align: center;
+color: white;
+}
+
+.team-content h2 {
+font-size: 3rem;
+margin-bottom: 10px;
+font-weight: bold;
+}
+
+.team-content p{
+ font-size: 14px;
+}
+
+.team-content .team-subtitle {
+font-size: 1.2rem;
+margin-bottom: 20px;
+font-weight: 500;
+}
+
+.shop-now-button {
+background-color: white;
+color: #ff4141;
+padding: 12px 25px;
+border: none;
+border-radius: 25px;
+font-size: 1rem;
+font-weight: bold;
+cursor: pointer;
+margin-top: 10px;
+text-decoration: none;
+transition: background-color 0.3s;
+}
+
+.shop-now-button:hover {
+background-color: #fff5f5;
+}
+
+.team-grid {
+display: flex;
+justify-content: center;
+gap: 30px;
+margin-top: 50px;
+flex-wrap: wrap;
+}
+
+.team-member {
+position: relative;
+background-color: #292929; 
+color: white;
+text-align: center;
+border-radius: 10px;
+overflow: hidden;
+width: 300px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.team-member img {
+width: 100%;
+height: auto;
+display: block;
+}
+
+.team-member h3 {
+font-size: 1.5rem;
+margin: 15px 0 5px;
+font-weight: bold;
+}
+
+.team-member p {
+font-size: 1rem;
+margin-bottom: 15px;
+font-weight: 500;
+}
+
+.team-plus-btn {
+position: absolute;
+bottom: 15px;
+right: 15px;
+background-color: #ff4141;
+color: white;
+border: none;
+border-radius: 50%;
+font-size: 1.5rem;
+width: 40px;
+height: 40px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.team-plus-btn:hover {
+background-color: #d93737;
+}
+
+@media (max-width: 768px) {
+  .choose-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

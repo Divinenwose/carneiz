@@ -1,0 +1,106 @@
+.promo-modal {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.promo-content {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 16px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+
+  transform-origin: top center;
+  animation: ropeDrop 1s ease-in-out, swing 1s ease-in-out 1s infinite alternate;
+}
+
+
+@keyframes ropeDrop {
+  0% {
+    transform: translateY(-200px) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(20px) rotate(5deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+
+@keyframes swing {
+  0% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(3deg);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+.promo-content h2 {
+  color: #ff4141;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.promo-content p {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.promo-content .countdown {
+  font-weight: bold;
+  color: #ff4141;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+
+@media (max-width: 768px) {
+  .promo-content {
+    width: 90%;
+    min-height: 50vh;
+    max-height: 70vh;
+  }
+}
+
+@media (max-width: 414px) {
+  .promo-content {
+    width: 60%;
+    min-height: 50vh;
+    max-height: 90vh;
+    top: 175px;
+  }
+}
