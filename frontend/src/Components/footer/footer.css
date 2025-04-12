@@ -16,13 +16,13 @@
 
 .footer-logo-address,
 .footer-links,
-.footer-blogs,
 .footer-socials {
     min-width: 250px;
 }
 
 .footer-logo {
-    width: 90px;
+    width: 160px;
+    height: 150px;
     margin-bottom: 20px;
     border-radius: 50%;
 }

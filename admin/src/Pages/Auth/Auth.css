@@ -1,5 +1,15 @@
-/* Centered Auth Container */
 .auth-container {
+  min-height: 100vh;
+  min-width: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-inline: auto;
+}
+
+
+.auth-card {
   width: 100%;
   max-width: 400px;
   padding: 30px;
@@ -10,12 +20,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 10vh;
-  margin: 200px auto;
   transition: transform 0.3s ease;
 }
 
-/* Header */
+
 .auth-container h2 {
   font-size: 28px;
   margin-bottom: 20px;
@@ -115,3 +123,50 @@
 .auth-container:hover {
   transform: scale(1.02);
 }
+
+@media (max-width: 768px) {
+  .auth-container {
+    margin: 100px auto;
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .auth-container h2 {
+    font-size: 24px;
+  }
+
+  .auth-container .auth-form input,
+  .auth-form button {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .auth-toggle-text,
+  .auth-toggle-btn {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    margin: 80px auto;
+    padding: 15px;
+    max-width: 95%;
+  }
+
+  .auth-container h2 {
+    font-size: 20px;
+  }
+
+  .auth-container .auth-form input,
+  .auth-form button {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .auth-toggle-text,
+  .auth-toggle-btn {
+    font-size: 12px;
+  }
+}
+

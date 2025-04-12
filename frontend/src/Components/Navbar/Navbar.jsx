@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
-import logo from '../../assets/logo2.jpg';
+import logo from '../../assets/logo.png';
 import cart_icon from '../../assets/shopping-cart (1).png';
 import menu_icon from '../../assets/menu.png'; 
 import user_icon from '../../assets/login.png'; 
 import order_icon from '../../assets/order.png'; 
 import logout_icon from '../../assets/logout.png'; 
 import { Link, useLocation } from 'react-router-dom';
-import telephone_icon from '../../assets/telephone.png';
+import whatsapp_icon from '../../assets/whatsapp.png';
 import location_icon from '../../assets/location.png';
 import envelope_icon from '../../assets/envelope.png';
 import AuthModal from '../Authmodal/Authmodal';
@@ -18,7 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Navbar = ({ cartItems, setCartItems }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Authentication state
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
 
@@ -27,8 +27,8 @@ const Navbar = ({ cartItems, setCartItems }) => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token); // Set isLoggedIn based on token presence
-  }, [isAuthOpen]); // Run effect when modal opens (login or sign-up)
+    setIsLoggedIn(!!token); 
+  }, [isAuthOpen]); 
 
   useEffect(() => {
     const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -44,18 +44,18 @@ const Navbar = ({ cartItems, setCartItems }) => {
         await axios.post("http://localhost:4000/api/user/logout");
         console.log("Logout successful");
 
-        // Preserve cart before logging out
+       
         const currentCart = cartItems.length > 0 ? cartItems : JSON.parse(localStorage.getItem("guestCart")) || [];
 
-        // Remove token from local storage
+        
         localStorage.removeItem("token");
 
-        // Save the cart as a guest cart
+        
         localStorage.setItem("guestCart", JSON.stringify(currentCart));
 
-        // Ensure state updates
+        
         setIsLoggedIn(false);
-        setCartItems([...currentCart]); // Try forcing state update
+        setCartItems([...currentCart]); 
         toast.success("Logged out successfully!");
 
         console.log("Cart after logout:", currentCart);
@@ -82,11 +82,11 @@ const Navbar = ({ cartItems, setCartItems }) => {
         </div>
         <div className="contact-item">
           <span><img src={envelope_icon} className='envelope' alt='' /></span> 
-          <a href="mailto:info@carneiz.com" className="contact-link">info@carneiz.com</a>
+          <a href="mailto:info@carneiz.com" target="_blank" rel="noopener noreferrer"  className="contact-link">info@carneiz.com</a>
         </div>
         <div className="contact-item">
-          <span><img src={telephone_icon} className='envelope' alt='' /></span> 
-          <a href="tel:+2347075723880" className="contact-link">+2347075723880</a>
+          <span><img src={whatsapp_icon} className='envelope' alt='' /></span> 
+          <a href="https://wa.me/2347075723880" target="_blank"  rel="noopener noreferrer"  className="contact-link">+2347075723880</a>
         </div>
       </div>
 
@@ -118,6 +118,12 @@ const Navbar = ({ cartItems, setCartItems }) => {
         </ul>
 
         <div className="nav-cart-icon">
+          <div className="cart-container">
+            <Link to="/Cart">
+              <img src={cart_icon} alt="Cart" className="cart-icon" />
+              <div className="nav-cart-count">{cartCount}</div> 
+            </Link>
+          </div>
           {isLoggedIn ? (
             <div className="user-dropdown">
               <img 
@@ -141,11 +147,6 @@ const Navbar = ({ cartItems, setCartItems }) => {
           ) : (
             <button className='login-btn' onClick={() => setIsAuthOpen(true)}>Sign in</button>
           )}
-          
-          <Link to="/Cart">
-            <img src={cart_icon} alt="Cart" className="cart-icon" />
-            <div className="nav-cart-count">{cartCount}</div> 
-          </Link>
           <img src={menu_icon} alt="Menu Icon" className="menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)} />
         </div>
       </div>

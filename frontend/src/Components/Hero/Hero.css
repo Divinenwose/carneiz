@@ -283,17 +283,18 @@
 
 @media (max-width: 590px) {
   .slider-image {
-    max-height: 40vh;
+    max-height: 800vh;
   }
   .slider-text {
     bottom: 40px;
     left: 5%;
   }
   .slider-text h2 {
-    font-size: 18px;
+    font-size: 16px;
   }
   .slider-text p {
-    font-size: 14px;
+    font-size: 12px;
+    width: 40%;
   }
   .learn-more-button {
     padding: 8px 16px;
@@ -310,18 +311,17 @@
     margin-top: 110px;
   }
   .slider-image {
-    max-height: 100vh;
+    max-height: 900vh;
   }
   .slider-text {
-    bottom: 12px;
     left: 5%;
   }
   .slider-text h2 {
-    font-size: 18px;
+    font-size: 16px;
     width: 80%;
   }
   .slider-text p {
-    font-size: 14px;
+    font-size: 12px;
     width: 80%;
   }
   .learn-more-button {
@@ -334,3 +334,31 @@
   }
 }
 
+@media (max-width: 375px) {
+  .slider-item {
+    margin-top: 110px;
+  }
+  .slider-image {
+    max-height: 900vh;
+  }
+  .slider-text {
+    top: 50%;
+    left: 5%;
+  }
+  .slider-text h2 {
+    font-size: 16px;
+    width: 80%;
+  }
+  .slider-text p {
+    font-size: 12px;
+    width: 80%;
+  }
+  .learn-more-button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+  .slick-arrow {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

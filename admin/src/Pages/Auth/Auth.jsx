@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,9 +9,11 @@ import "./Auth.css";
 const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  const recaptchaRef = useRef(null);
   const navigate = useNavigate();
 
   const baseUrl = import.meta.env.VITE_API_URL;
+  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY; // set this in your .env file
 
   const toggleForm = () => {
     setIsSignUp(!isSignUp);
@@ -22,12 +25,20 @@ const Auth = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const recaptchaToken = grecaptcha.getResponse(); 
+
+    if (!recaptchaToken) {
+      toast.error("Please complete the reCAPTCHA.");
+      return;
+    }
+
     const endpoint = isSignUp ? "/api/admin/signup" : "/api/admin/login";
     const fullUrl = `${baseUrl}${endpoint}`;
 
     const payload = isSignUp
-      ? { fullName: formData.name, email: formData.email, password: formData.password }
-      : { email: formData.email, password: formData.password };
+      ? { fullName: formData.name, email: formData.email, password: formData.password, recaptchaToken }
+      : { email: formData.email, password: formData.password, recaptchaToken };
 
     try {
       const { data } = await axios.post(fullUrl, payload);
@@ -42,7 +53,7 @@ const Auth = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h2>{isSignUp ? "Admin Sign Up" : "Admin Login"}</h2>
+        <h2>{isSignUp ? "Admin Sign up" : "Admin Login"}</h2>
         <form onSubmit={handleSubmit} className="auth-form">
           {isSignUp && (
             <input
@@ -69,6 +80,11 @@ const Auth = () => {
             value={formData.password}
             onChange={handleChange}
             required
+          />
+          <ReCAPTCHA
+            sitekey={siteKey}
+            onChange={(value) => setRecaptchaToken(value)}
+            size="normal"
           />
           <button type="submit">{isSignUp ? "Sign Up" : "Login"}</button>
         </form>

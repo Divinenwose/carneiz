@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Add from './Pages/Add/Add.jsx';
 import Orders from "./Pages/Orders/Orders.jsx";
 import List from "./Pages/List/List.jsx";
@@ -11,12 +11,14 @@ import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const isLoggedIn = Boolean(localStorage.getItem("adminToken")); 
 
-  
-  if (!isLoggedIn) {
-    navigate("/auth", { replace: true });
-  }
+  useEffect(() => {
+    if (!isLoggedIn && location.pathname !== "/auth") {
+      navigate("/auth", { replace: true });
+    }
+  }, [isLoggedIn, navigate, location.pathname]);
 
   return (
     <div>

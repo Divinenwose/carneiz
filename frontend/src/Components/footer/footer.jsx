@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./footer.css";
-import Logo from '../../assets/logo2.jpg';
+import Logo from '../../assets/logo.png';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -15,7 +15,7 @@ const Footer = () => {
           <img src={Logo} alt="Logo" className="footer-logo" />
           <p>17 MCC Road Ikenegbu, Owerri, Imo State</p>
           <p>Phone: +2347075723880</p>
-          <p>Email: Henry@carneiz.com</p>
+          <p>Email: info@carneiz.com</p>
         </div>
         <div className="footer-links">
           <h3>Quick Links</h3>
@@ -29,10 +29,10 @@ const Footer = () => {
         <div className="footer-socials">
           <h3>Follow Us</h3>
           <div className="social-icons">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/profile.php?id=61572984234559&locale=en_GB" target="_blank" rel="noopener noreferrer">
               <img src="./images/facebook-icon.png" alt="Facebook" className="social-icon" />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/carneiz_meat_spices/" target="_blank" rel="noopener noreferrer">
               <img src="./images/instagram-icon.png" alt="Instagram" className="social-icon" />
             </a>
             <a href="https://x.com" target="_blank" rel="noopener noreferrer">

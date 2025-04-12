@@ -100,7 +100,7 @@ const Cart = ({ cartItems, updateQuantity, removeFromCart }) => {
               <h3>Cart Totals</h3>
               <div className="cart-row">
                 <span>Subtotal</span>
-                <span className="amount">${calculateSubtotal()}</span>
+                <span className="amount">₦{calculateSubtotal()}</span>
               </div>
               <div className="cart-row">
                 <span>Delivery Fee</span>
