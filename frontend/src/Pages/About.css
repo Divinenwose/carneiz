@@ -136,6 +136,7 @@
   height: 270px;
   object-fit: cover;
   margin-bottom: 15px;
+  border-radius: 8px;
 }
 
 .choose-item h3 {
