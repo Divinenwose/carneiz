@@ -8,12 +8,14 @@ import "./Auth.css";
 
 const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", password: "", confirmPassword: "" });
+  const [showPassword, setShowPassword] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
   const recaptchaRef = useRef(null);
   const navigate = useNavigate();
 
   const baseUrl = import.meta.env.VITE_API_URL;
-  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY; 
+  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
   const toggleForm = () => {
     setIsSignUp(!isSignUp);
@@ -26,7 +28,10 @@ const Auth = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const recaptchaToken = grecaptcha.getResponse(); 
+    if (isSignUp && formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match!");
+      return;
+    }
 
     if (!recaptchaToken) {
       toast.error("Please complete the reCAPTCHA.");
@@ -44,7 +49,11 @@ const Auth = () => {
       const { data } = await axios.post(fullUrl, payload);
       toast.success(data.message || "Authenticated successfully!");
       localStorage.setItem("adminToken", data.token);
-      setTimeout(() => navigate("/home"), 1500);
+
+      // If sign-up is successful, show the login modal after a short delay
+      if (isSignUp) {
+        setTimeout(() => navigate("/home"), 1500); // navigate to home after sign-up
+      }
     } catch (err) {
       toast.error(err.response?.data?.message || "Something went wrong");
     }
@@ -74,13 +83,35 @@ const Auth = () => {
             required
           />
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             name="password"
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
             required
           />
+          {isSignUp && (
+            <input
+              type={showPassword ? "text" : "password"}
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+          )}
+
+          {/* Show Password Checkbox */}
+          <div className="show-password-container">
+            <input
+              type="checkbox"
+              id="showPassword"
+              checked={showPassword}
+              onChange={() => setShowPassword(!showPassword)}
+            />
+            <label htmlFor="showPassword">Show Password</label>
+          </div>
+
           <ReCAPTCHA
             sitekey={siteKey}
             onChange={(value) => setRecaptchaToken(value)}

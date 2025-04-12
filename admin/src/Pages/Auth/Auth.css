@@ -40,7 +40,7 @@
 
 .auth-container .auth-form input {
   padding: 14px;
-  margin: 12px 0;
+  margin: 8px 0;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 16px;
@@ -123,6 +123,17 @@
 .auth-container:hover {
   transform: scale(1.02);
 }
+
+.show-password-container {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.show-password-container input {
+  margin-right: 5px;
+}
+
 
 @media (max-width: 768px) {
   .auth-container {
@@ -213,6 +224,7 @@
 
   .auth-container .auth-form input,
   .auth-form button {
+    margin: 18px 0;
     font-size: 13px;
     padding: 10px;
   }
