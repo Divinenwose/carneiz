@@ -57,23 +57,6 @@ const About = () => {
     },
   ];
 
-  const teamMembers = [
-    {
-      name: 'Alaxzender Pilot',
-      role: 'Stack Expert',
-      image: './images/butcher 1.jpg',
-    },
-    {
-      name: 'Starlee Jonson',
-      role: 'Stack Expert',
-      image: './images/butcher 2.jpg',
-    },
-    {
-      name: 'Another Pilot',
-      role: 'Stack Expert',
-      image: './images/butcher 3.jpg',
-    },
-  ];
 
   return (
     <div className="about-section">

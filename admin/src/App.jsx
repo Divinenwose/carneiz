@@ -12,9 +12,10 @@ import { ToastContainer } from 'react-toastify';
 const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isLoggedIn = Boolean(localStorage.getItem("adminToken")); 
+  const isLoggedIn = Boolean(localStorage.getItem("adminToken"));
 
   useEffect(() => {
+    // Always navigate to /auth first, if not logged in
     if (!isLoggedIn && location.pathname !== "/auth") {
       navigate("/auth", { replace: true });
     }
@@ -28,11 +29,12 @@ const App = () => {
       <div className="app-content">
         {isLoggedIn && <Sidebar />} 
         <Routes>
+          {/* Always route to /auth if user is not logged in */}
           <Route path="/" element={<HomePage />} />
           <Route path="/add" element={<Add />} />
           <Route path="/list" element={<List />} />
           <Route path="/orders" element={<Orders />} />
-          <Route path="/auth" element={<Auth />} /> 
+          <Route path="/auth" element={<Auth />} /> {/* Auth page should always be accessible */}
         </Routes>
       </div>
     </div>

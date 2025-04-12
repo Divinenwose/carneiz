@@ -1,5 +1,5 @@
 .about-banner {
-  background-image: url('../../public/images/image1.png'); 
+  background-image: url('/images/image1.png'); 
   background-size: cover;
   background-position: center;
   padding: 110px 20px;
