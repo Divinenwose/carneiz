@@ -13,7 +13,7 @@ const Auth = () => {
   const navigate = useNavigate();
 
   const baseUrl = import.meta.env.VITE_API_URL;
-  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY; // set this in your .env file
+  const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY; 
 
   const toggleForm = () => {
     setIsSignUp(!isSignUp);
