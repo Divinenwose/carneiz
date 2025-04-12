@@ -117,6 +117,38 @@
     transition: all 0.3s ease-in-out;
 }
 
+/* Style for Confirm Password input */
+.auth-modal input[name="confirmPassword"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .auth-modal input[name="confirmPassword"]:focus {
+    outline: none;
+    border-color: #2ecc71;
+  }
+  
+  /* Style for Show Password checkbox */
+  .show-password {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .show-password input {
+    margin: 0;
+  }
+  
+  .auth-modal input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+  
+
 
 @media (max-width: 450px) {
     .auth-modal {

@@ -18,8 +18,13 @@ const port = 4000
 
 app.use(cookieParser());
 app.use(express.json())
-app.use(cors())
-
+app.use(cors({
+    origin: ['https://carneiz.org', 'https://www.carneiz.org'], 
+    methods: ['GET', 'POST'], 
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+    credentials: true, 
+  }));
+  
 
 connectDB();
 

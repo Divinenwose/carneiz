@@ -7,6 +7,8 @@ import "./Authmodal.css";
 const AuthModal = ({ isOpen, onClose }) => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "", name: "" });
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
   if (!isOpen) return null;
@@ -18,30 +20,38 @@ const AuthModal = ({ isOpen, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
+
+    if (isSignUp && formData.password !== confirmPassword) {
+      toast.error("Passwords do not match!", {
+        style: { backgroundColor: "#dc3545", color: "#fff", fontWeight: "bold" },
+      });
+      setLoading(false);
+      return;
+    }
+
     const apiUrl = isSignUp
       ? "http://localhost:4000/api/user/signup"
       : "http://localhost:4000/api/user/login";
-  
-    // Retrieve guest cart from localStorage
+
     const guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
-  
+
     try {
-      // Send login/signup request along with guestCart (only for login)
       const res = await axios.post(apiUrl, isSignUp ? formData : { ...formData, guestCart });
-  
+
       toast.success(isSignUp ? "Sign Up successful!" : "Login successful!", {
         style: { backgroundColor: "#2ecc71", color: "#fff", fontWeight: "bold" },
       });
-  
+
       localStorage.setItem("token", res.data.token);
-  
-      // If login is successful, clear guest cart
+
       if (!isSignUp) {
         localStorage.removeItem("guestCart");
+        onClose(); // Close modal after successful login
+      } else {
+        setIsSignUp(false); // Switch to login mode after successful sign-up
+        setFormData({ email: "", password: "", name: "" });
+        setConfirmPassword("");
       }
-  
-      onClose(); // Close modal after successful authentication
     } catch (error) {
       console.error("🚨 Server Response Error:", error.response?.data || error.message);
       toast.error(error.response?.data?.message || "Login/Sign Up failed. Try again!", {
@@ -55,6 +65,7 @@ const AuthModal = ({ isOpen, onClose }) => {
   const toggleMode = () => {
     setIsSignUp(!isSignUp);
     setFormData({ email: "", password: "", name: isSignUp ? "" : formData.name });
+    setConfirmPassword("");
   };
 
   return (
@@ -82,13 +93,31 @@ const AuthModal = ({ isOpen, onClose }) => {
             onChange={handleChange}
           />
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             name="password"
             value={formData.password}
             placeholder="Password"
             required
             onChange={handleChange}
           />
+          {isSignUp && (
+            <input
+              type={showPassword ? "text" : "password"}
+              name="confirmPassword"
+              value={confirmPassword}
+              placeholder="Confirm Password"
+              required
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          )}
+          <label className="show-password">
+            <input
+              type="checkbox"
+              checked={showPassword}
+              onChange={() => setShowPassword(!showPassword)}
+            />
+            Show Password
+          </label>
           <button type="submit" disabled={loading || !formData.email || !formData.password}>
             {loading ? "Processing..." : isSignUp ? "Sign Up" : "Login"}
           </button>
