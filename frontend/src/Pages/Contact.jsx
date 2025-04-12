@@ -82,10 +82,10 @@ const Contact = () => {
           </ul>
           <h3>Follow Us</h3>
           <div className="social-icons">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/profile.php?id=61572984234559&locale=en_GB" target="_blank" rel="noopener noreferrer">
               <img src="./images/facebook-icon.png" alt="Facebook" />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/carneiz_meat_spices/" target="_blank" rel="noopener noreferrer">
               <img src="./images/instagram-icon.png" alt="Instagram" />
             </a>
             <a href="https://x.com" target="_blank" rel="noopener noreferrer">
