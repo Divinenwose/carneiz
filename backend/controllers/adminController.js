@@ -61,10 +61,10 @@ export const loginAdmin = async (req, res) => {
     return res.status(400).json({ message: 'Invalid credentials' });
   }
 
-  // Generate OTP
+  
   const otp = speakeasy.totp({ secret: process.env.OTP_SECRET, encoding: 'base32' });
 
-  // Send OTP via email using nodemailer
+  
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
