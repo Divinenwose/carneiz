@@ -14,9 +14,7 @@ const FeaturedProducts = ({ addToCart }) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/product/featured`, {
-        credentials: 'include'
-      });
+      const response = await fetch(`${import.meta.env.VITE_API_URL}api/product/featured`);
       if (!response.ok) throw new Error('Failed to fetch products');
       const jsonResponse = await response.json();
       setProducts(jsonResponse.data || []);
