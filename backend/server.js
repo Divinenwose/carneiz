@@ -20,6 +20,7 @@ app.use(cookieParser());
 app.use(express.json())
 app.use(cors({
     origin: ['https://carneiz.org', 'https://www.carneiz.org', 'https://admin.carneiz.org'], 
+    credentials: true
   }));
   
 
