@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react'; 
 import './About.css';
 import { useNavigate } from "react-router-dom";
 import Footer from '../Components/footer/footer';
@@ -11,6 +11,10 @@ const About = () => {
     navigate("/Product");
     window.scrollTo(0, 0); 
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const chooseItems = [
     {

@@ -55,7 +55,7 @@
   animation: softGlow 2s infinite alternate;
 }
 
-/* New Fade-in & Scale Animation */
+
 @keyframes fadeInScale {
   from {
     opacity: 0;
@@ -78,7 +78,7 @@
   }
 }
 
-/* Subtitle Enhancements */
+
 .slider-text p {
   font-size: 30px;
   color: rgba(255, 255, 255, 0.9);
@@ -89,7 +89,7 @@
   animation: fadeInUp 1s ease-out forwards 0.5s;
 }
 
-/* Button with Glowing Effect */
+
 .learn-more-button {
   background: linear-gradient(90deg, #ff4141, #ff7300);
   border: none;
@@ -159,7 +159,6 @@
   transform: scale(1.05);
 }
 
-/* Slider Arrows */
 .slick-arrow {
   position: absolute;
   top: 50%;
@@ -195,7 +194,7 @@
   transform: scale(1.08);
 }
 
-/* Responsive Adjustments */
+
 
 @media (max-width: 1200px) {
   .slider-text {
@@ -257,7 +256,7 @@
 
 @media (max-width: 768px) {
   .slider-image {
-    max-height: 50vh;
+    height: 50vh;
   }
   .slider-text {
     bottom: 160px;
@@ -283,21 +282,21 @@
 
 @media (max-width: 590px) {
   .slider-image {
-    max-height: 800vh;
+    height: 80vh;
   }
   .slider-text {
     bottom: 40px;
     left: 5%;
   }
   .slider-text h2 {
-    font-size: 16px;
+    font-size: 18px;
   }
   .slider-text p {
-    font-size: 12px;
+    font-size: 16px;
     width: 40%;
   }
   .learn-more-button {
-    padding: 8px 16px;
+    padding: 8px 14px;
     font-size: 12px;
   }
   .slick-arrow {
@@ -311,7 +310,7 @@
     margin-top: 110px;
   }
   .slider-image {
-    max-height: 900vh;
+    height: 50vh;
   }
   .slider-text {
     left: 5%;
@@ -334,15 +333,45 @@
   }
 }
 
+@media (max-width: 430px) {
+  .slider-item {
+    margin-top: 110px;
+  }
+  .slider-image {
+    height: 50vh;
+  }
+  .slider-text {
+    top: 40%;
+    left: 5%;
+  }
+  .slider-text h2 {
+    font-size: 18px;
+    width: 80%;
+  }
+  .slider-text p {
+    font-size: 18px;
+    width: 90%;
+  }
+  .learn-more-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  .slick-arrow {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+
 @media (max-width: 375px) {
   .slider-item {
     margin-top: 110px;
   }
   .slider-image {
-    max-height: 900vh;
+    height: 50vh;
   }
   .slider-text {
-    top: 50%;
+    top: 47%;
     left: 5%;
   }
   .slider-text h2 {
@@ -351,7 +380,7 @@
   }
   .slider-text p {
     font-size: 12px;
-    width: 80%;
+    width: 85%;
   }
   .learn-more-button {
     padding: 8px 16px;

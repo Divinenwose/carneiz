@@ -148,7 +148,7 @@ const App = () => {
     if (token) {
       try {
         const response = await axios.post(
-          "http://localhost:4000/api/cart/remove",
+          `${apiUrl}/api/cart/remove`,
           { productId },
           { headers: { Authorization: token ? `Bearer ${token}` : "" } }
         );
@@ -164,7 +164,6 @@ const App = () => {
         toast.error("An error occurred while removing item.");
       }
     } else {
-      // Guest cart logic
       setCartItems((prevCart) => {
         const updatedCart = prevCart.filter((item) => item.product._id !== productId);
         saveGuestCart(updatedCart);
