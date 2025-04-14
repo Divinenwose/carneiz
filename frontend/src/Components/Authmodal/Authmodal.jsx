@@ -20,7 +20,7 @@ const AuthModal = ({ isOpen, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+  
     if (isSignUp && formData.password !== confirmPassword) {
       toast.error("Passwords do not match!", {
         style: { backgroundColor: "#dc3545", color: "#fff", fontWeight: "bold" },
@@ -28,27 +28,37 @@ const AuthModal = ({ isOpen, onClose }) => {
       setLoading(false);
       return;
     }
-
+  
+    const baseUrl = import.meta.env.VITE_API_URL;
     const apiUrl = isSignUp
-      ? "http://localhost:4000/api/user/signup"
-      : "http://localhost:4000/api/user/login";
-
+      ? `${baseUrl}/api/user/signup`
+      : `${baseUrl}/api/user/login`;
+  
     const guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
-
+  
     try {
-      const res = await axios.post(apiUrl, isSignUp ? formData : { ...formData, guestCart });
-
+      const res = await axios.post(
+        apiUrl,
+        isSignUp ? formData : { ...formData, guestCart },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          withCredentials: true, 
+        }
+      );
+  
       toast.success(isSignUp ? "Sign Up successful!" : "Login successful!", {
         style: { backgroundColor: "#2ecc71", color: "#fff", fontWeight: "bold" },
       });
-
+  
       localStorage.setItem("token", res.data.token);
-
+  
       if (!isSignUp) {
         localStorage.removeItem("guestCart");
-        onClose(); // Close modal after successful login
+        onClose();
       } else {
-        setIsSignUp(false); // Switch to login mode after successful sign-up
+        setIsSignUp(false);
         setFormData({ email: "", password: "", name: "" });
         setConfirmPassword("");
       }
