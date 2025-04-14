@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { User } from "../models/userModel.js";
 import mongoose from "mongoose"; 
 
-// Function to generate JWT token
+
 const generateToken = (id) => {
   if (!process.env.JWT_SECRET) {
     console.warn("⚠️ Warning: JWT_SECRET is not set. Tokens may not work.");
@@ -49,7 +49,7 @@ export const registerUser = async (req, res) => {
 
 export const loginUser = async (req, res) => {
   try {
-    const { email, password, guestCart = [] } = req.body; // Accept guestCart from request body
+    const { email, password, guestCart = [] } = req.body; 
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -61,18 +61,18 @@ export const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid email or password." });
     }
 
-    // Ensure cart exists in the database
+    
     if (!Array.isArray(user.cart)) {
       user.cart = [];
     }
 
-    // Merge guest cart with user's cart
+    
     guestCart.forEach((guestItem) => {
-      const productId = guestItem.product._id || guestItem.product; // Extract _id if it's an object
+      const productId = guestItem.product._id || guestItem.product; 
     
       if (!mongoose.Types.ObjectId.isValid(productId)) {
         console.error(`Invalid ObjectId: ${JSON.stringify(guestItem.product)}`);
-        return; // Skip invalid items
+        return; 
       }
     
       const existingItem = user.cart.find(
@@ -90,10 +90,10 @@ export const loginUser = async (req, res) => {
     });
     
 
-    // Save updated cart to the database
+    
     await user.save();
 
-    // Generate authentication token
+    
     const token = generateToken(user._id);
 
     res.status(200).json({
