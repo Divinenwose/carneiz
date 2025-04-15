@@ -41,7 +41,7 @@ const Navbar = ({ cartItems, setCartItems }) => {
 
   const handleLogout = async () => {
     try {
-        await axios.post("http://localhost:4000/api/user/logout");
+        await axios.post(`${import.meta.env.VITE_API_URL}api/user/logout`);
         console.log("Logout successful");
 
        
