@@ -15,7 +15,7 @@ const ProductPage = ({ addToCart, cartItems }) => {
 
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/product/list`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}api/product/list`);
         const data = await response.json();
 
         if (data.success) {
@@ -101,7 +101,7 @@ const ProductPage = ({ addToCart, cartItems }) => {
         {filteredProducts.map((product) => (
           <div className="product-card" key={product._id}>
             <img
-              src={`${import.meta.env.VITE_API_URL}/images/${product.image}`}
+              src={`${import.meta.env.VITE_API_URL}images/${product.image}`}
               alt={product.name}
               loading="lazy"
             />

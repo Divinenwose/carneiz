@@ -13,7 +13,7 @@ const MyOrders = () => {
   const fetchOrders = async () => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/order/userorders`, 
+        `${import.meta.env.VITE_API_URL}api/order/userorders`, 
         {},
         {
           headers: {
@@ -30,9 +30,9 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (!userToken) {
-      navigate("/cart"); // Redirect to cart if no token is found
+      navigate("/cart"); 
     } else {
-      fetchOrders(); // Fetch orders if token is available
+      fetchOrders(); 
     }
   }, [userToken, navigate]);
 

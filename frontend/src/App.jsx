@@ -29,7 +29,7 @@ const App = () => {
   const fetchCart = async () => {
     try {
       const response = await axios.post(
-        `${apiUrl}/api/cart/get`, 
+        `${apiUrl}api/cart/get`, 
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -40,7 +40,7 @@ const App = () => {
           name: item.product.name,
           price: item.product.price,
           image: item.product.image
-            ? `${apiUrl}/images/${item.product.image}`
+            ? `${apiUrl}images/${item.product.image}`
             : "placeholder.jpg",
         },
         quantity: item.quantity,
@@ -72,7 +72,7 @@ const App = () => {
         ...item.product,
         image: item.product.image?.startsWith("http")
           ? item.product.image
-          : `${apiUrl}/images/${item.product.image || "placeholder.jpg"}`,
+          : `${apiUrl}images/${item.product.image || "placeholder.jpg"}`,
       },
     }));
 
@@ -83,7 +83,7 @@ const App = () => {
     if (token) {
       try {
         const response = await axios.post(
-          `${apiUrl}/api/cart/add`,
+          `${apiUrl}api/cart/add`,
           { productId: product._id, quantity: 1 },
           { headers: { Authorization: token ? `Bearer ${token}` : "" } }
         );
@@ -99,7 +99,7 @@ const App = () => {
         toast.error("An error occurred while adding to cart.");
       }
     } else {
-      // Guest cart logic
+    
       setCartItems((prevCart) => {
         const existingItem = prevCart.find((item) => item.product._id === product._id);
         let updatedCart;
@@ -112,7 +112,7 @@ const App = () => {
           updatedCart = [...prevCart, { 
             product: {
               ...product, 
-              image: product.image?.startsWith("http") ? product.image : `${apiUrl}/images/${product.image || "placeholder.jpg"}`
+              image: product.image?.startsWith("http") ? product.image : `${apiUrl}images/${product.image || "placeholder.jpg"}`
             }, 
             quantity: 1 
           }];
@@ -148,7 +148,7 @@ const App = () => {
     if (token) {
       try {
         const response = await axios.post(
-          `${apiUrl}/api/cart/remove`,
+          `${apiUrl}api/cart/remove`,
           { productId },
           { headers: { Authorization: token ? `Bearer ${token}` : "" } }
         );

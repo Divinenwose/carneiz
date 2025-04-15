@@ -43,7 +43,7 @@ const FeaturedProducts = ({ addToCart }) => {
           products.map((product) => (
             <div key={product._id} className="product-card">
               <img 
-                src={product.image ? `${import.meta.env.VITE_API_URL}/images/${product.image}` : './images/default.png'} 
+                src={product.image ? `${import.meta.env.VITE_API_URL}images/${product.image}` : './images/default.png'} 
                 alt={product.name} 
                 onError={(e) => e.target.src = './images/default.png'} 
               />

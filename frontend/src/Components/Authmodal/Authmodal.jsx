@@ -31,8 +31,8 @@ const AuthModal = ({ isOpen, onClose }) => {
   
     const baseUrl = import.meta.env.VITE_API_URL;
     const apiUrl = isSignUp
-      ? `${baseUrl}/api/user/signup`
-      : `${baseUrl}/api/user/login`;
+      ? `${baseUrl}api/user/signup`
+      : `${baseUrl}api/user/login`;
   
     const guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
   
