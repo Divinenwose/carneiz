@@ -1,6 +1,6 @@
 .slider-image {
   width: 100%;
-  max-height: 90vh;
+  max-height: 95vh;
   object-fit: cover;
   display: block;
   margin-top: 120px;
@@ -345,11 +345,11 @@
     left: 5%;
   }
   .slider-text h2 {
-    font-size: 18px;
+    font-size: 22px;
     width: 80%;
   }
   .slider-text p {
-    font-size: 18px;
+    font-size: 20px;
     width: 90%;
   }
   .learn-more-button {
@@ -375,11 +375,11 @@
     left: 5%;
   }
   .slider-text h2 {
-    font-size: 16px;
+    font-size: 20px;
     width: 80%;
   }
   .slider-text p {
-    font-size: 12px;
+    font-size: 16px;
     width: 85%;
   }
   .learn-more-button {

@@ -3,6 +3,7 @@ import './Add.css';
 import { assets } from "../../assets/assets";
 import axios from "axios"
 import { toast } from "react-toastify";
+import { ToastContainer } from 'react-toastify';
 
 const Add = () => {
 
@@ -52,6 +53,7 @@ const Add = () => {
 
     return (
         <div className="add">
+            <ToastContainer />
             <form className="flex-col" onSubmit={onSubmitHandler}>
                 <div className="add-img-upload flex-col">
                     <p>Upload Image</p>
@@ -78,12 +80,13 @@ const Add = () => {
                             <option value="Spices">Spices</option>
                             <option value="Goat meat">Goat meat</option>
                             <option value="Turkey">Turkey</option>
-                            <option value="Cat fish">Cat fish</option>
+                            <option value="Fish">Fish</option>
+                            <option value="Gizzard">Gizzard</option>
                         </select>
                     </div>
                     <div className="add-price flex-col">
                         <p>Product price</p>
-                        <input onChange={onChangeHandler} value={data.price} type="number" name="price" placeholder="₦20" />
+                        <input onChange={onChangeHandler} value={data.price} type="number" name="price" placeholder="₦2000" />
                     </div>
                 </div>
                 <div className="add-featured">

@@ -35,8 +35,8 @@ const Footer = () => {
             <a href="https://www.instagram.com/carneiz_meat_spices/" target="_blank" rel="noopener noreferrer">
               <img src="./images/instagram-icon.png" alt="Instagram" className="social-icon" />
             </a>
-            <a href="https://x.com" target="_blank" rel="noopener noreferrer">
-              <img src="./images/x-icon.png" alt="X (Twitter)" className="social-icon" />
+            <a href="https://www.tiktok.com/@carneiz?_t=ZN-8xC7kHxtdVW&_r=1" target="_blank" rel="noopener noreferrer">
+              <img src="./images/tik-tok.png" alt="X (Twitter)" className="social-icon" />
             </a>
           </div>
         </div>

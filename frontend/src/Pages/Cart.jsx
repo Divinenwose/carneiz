@@ -8,6 +8,8 @@ const Cart = ({ cartItems, updateQuantity, removeFromCart }) => {
   const [discount, setDiscount] = useState(0);
   const [promoApplied, setPromoApplied] = useState(false);
 
+  const deliveryFee = 2500;
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -38,8 +40,7 @@ const Cart = ({ cartItems, updateQuantity, removeFromCart }) => {
   const calculateTotal = useCallback(() => {
     const subtotal = parseFloat(calculateSubtotal());
     const discountAmount = (subtotal * discount) / 100;
-    const deliveryFee = 2;
-    return (subtotal - discountAmount + deliveryFee).toFixed(2);
+    return (subtotal - discountAmount + deliveryFee).toLocaleString(undefined, { minimumFractionDigits: 2 });
   }, [calculateSubtotal, discount]);
 
   const handleProceedToCheckout = () => {
@@ -47,9 +48,9 @@ const Cart = ({ cartItems, updateQuantity, removeFromCart }) => {
       state: {
         cartItems,
         subtotal: parseFloat(calculateSubtotal()),
-        deliveryFee: 2,
+        deliveryFee,
         discount,
-        totalAmount: calculateTotal(),
+        totalAmount: parseFloat(calculateTotal().replace(/,/g, "")),
         promoApplied,
       },
     });
@@ -76,18 +77,18 @@ const Cart = ({ cartItems, updateQuantity, removeFromCart }) => {
             <tbody>
               {cartItems.map((item) => (
                 <tr key={item.product?._id}>
-                  <td>
+                  <td data-label="Item image">
                     <img src={item.product.image || "placeholder.jpg"} alt={item.product.name} className="cart-item-image" />
                   </td>
-                  <td>{item.product?.name}</td>
-                  <td>₦{item.product?.price?.toFixed(2)}</td>
-                  <td>
+                  <td data-label="Product name">{item.product?.name}</td>
+                  <td data-label="Price">₦{item.product?.price?.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                  <td data-label="Quantity (kg)">
                     <button className="decrease" onClick={() => updateQuantity(item.product?._id, "decrease")} disabled={item.quantity <= 1}>-</button>
                     <span className="item-quantity">{item.quantity}</span>
                     <button className="increase" onClick={() => updateQuantity(item.product?._id, "increase")}>+</button>
                   </td>
-                  <td>${((item.product?.price || 0) * item.quantity).toFixed(2)}</td>
-                  <td>
+                  <td data-label="Total">₦{((item.product?.price || 0) * item.quantity).toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                  <td data-label="Remove">
                     <button className="remove-button" onClick={() => removeFromCart(item.product?._id)}>x</button>
                   </td>
                 </tr>
@@ -100,13 +101,13 @@ const Cart = ({ cartItems, updateQuantity, removeFromCart }) => {
               <h3>Cart Totals</h3>
               <div className="cart-row">
                 <span>Subtotal</span>
-                <span className="amount">₦{calculateSubtotal()}</span>
+                <span className="amount">₦{parseFloat(calculateSubtotal()).toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
               </div>
               <div className="cart-row">
                 <span>Delivery Fee</span>
-                <span className="amount">₦2.00</span>
+                <span className="amount">₦{deliveryFee.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
               </div>
-              {calculateTotalWeight() >= 1 && (
+              {calculateTotalWeight() >= 3 && (
                 <div className="cart-row">
                   <span>Bonus</span>
                   <span className="amount">🎁 0.5L Cooking Oil</span>
@@ -115,7 +116,13 @@ const Cart = ({ cartItems, updateQuantity, removeFromCart }) => {
               {promoApplied && (
                 <div className="cart-row">
                   <span>Discount</span>
-                  <span className="amount">-10%</span>
+                  <span className="amount">
+                    -10% (
+                    ₦{((parseFloat(calculateSubtotal()) * discount) / 100).toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                    })}
+                    )
+                  </span>
                 </div>
               )}
               <div className="cart-row total">

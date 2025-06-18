@@ -7,34 +7,37 @@ import Orders from "./Pages/Orders/Orders.jsx";
 import List from "./Pages/List/List.jsx";
 import Auth from "./Pages/Auth/Auth.jsx";
 import HomePage from "./Pages/Home/Home.jsx";
-import { ToastContainer } from 'react-toastify';
+import VerifyOtp from "./Pages/VerifyOTP/VerifyOtp.jsx";
 
 const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const isLoggedIn = Boolean(localStorage.getItem("adminToken"));
 
+  // Exclude navbar/sidebar on auth and verify-otp pages
+  const isAuthPage = location.pathname === "/auth" || location.pathname === "/verify-otp";
+
   useEffect(() => {
-    // Always navigate to /auth first, if not logged in
-    if (!isLoggedIn && location.pathname !== "/auth") {
+    if (!isLoggedIn && !isAuthPage) {
       navigate("/auth", { replace: true });
     }
   }, [isLoggedIn, navigate, location.pathname]);
 
   return (
     <div>
-      <ToastContainer />
-      {isLoggedIn && <Navbar />} 
+      {/* Show only if not on /auth or /verify-otp */}
+      {isLoggedIn && !isAuthPage && <Navbar />}
       <hr />
       <div className="app-content">
-        {isLoggedIn && <Sidebar />} 
+        {isLoggedIn && !isAuthPage && <Sidebar />}
         <Routes>
-          {/* Always route to /auth if user is not logged in */}
           <Route path="/" element={<HomePage />} />
           <Route path="/add" element={<Add />} />
           <Route path="/list" element={<List />} />
           <Route path="/orders" element={<Orders />} />
-          <Route path="/auth" element={<Auth />} /> {/* Auth page should always be accessible */}
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/verify-otp" element={<VerifyOtp />} />
         </Routes>
       </div>
     </div>

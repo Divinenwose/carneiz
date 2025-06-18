@@ -6,7 +6,6 @@ import "./Order.css";
 import { jwtDecode } from "jwt-decode";
 import Logo from "../assets/logo2.jpg";
 
-// Imo cities array
 const imoCities = [
   "Owerri", "Orlu", "Okigwe", "Mbaise", "Oguta", "Mbano", "Nkwerre", "Isu", "Ideato North", "Ideato South",
   "Ezinihitte", "Ngor Okpala", "Obowo", "Ihitte Uboma", "Nwangele", "Ohaji/Egbema", "Oru East", "Oru West",
@@ -16,7 +15,13 @@ const imoCities = [
 const Order = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { subtotal = 0, deliveryFee = 2, discount = 0, totalAmount = 0, cartItems = [] } = location.state || {};
+  const { subtotal = 0, deliveryFee = 2500, discount = 0, cartItems = [] } = location.state || {};
+
+  const totalAmount = useMemo(() => {
+    const discounted = subtotal * (discount / 100);
+    return subtotal + deliveryFee - discounted;
+  }, [subtotal, deliveryFee, discount]);
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -57,7 +62,7 @@ const Order = () => {
   const paymentConfig = useMemo(() => ({
     public_key: import.meta.env.VITE_FLW_PUBLIC_KEY,
     tx_ref: `TX-${Date.now()}`,
-    amount: parseFloat(totalAmount) || 0,
+    amount: totalAmount,
     currency: "NGN",
     payment_options: "card, mobilemoney, ussd",
     customer: {
@@ -79,7 +84,7 @@ const Order = () => {
 
     const token = localStorage.getItem("token");
     if (!token) {
-      alert("User not authenticated.");
+      alert("Please kindly log in.");
       return;
     }
 
@@ -129,9 +134,8 @@ const Order = () => {
             }
           };
 
-          // API call to place the order
           try {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/order/place`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}api/order/place`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -141,7 +145,6 @@ const Order = () => {
             });
 
             if (res.ok) {
-              // Navigate to the order history page on success
               navigate("/myorders");
             } else {
               const err = await res.json();
@@ -247,13 +250,18 @@ const Order = () => {
           </div>
           <div className="cart-row">
             <span>Discount</span>
-            <span className="amount">-{discount}%</span>
+            <span className="amount">
+              -{discount}% (
+              ₦{((subtotal * discount) / 100).toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+              })}
+              )
+            </span>
           </div>
           <div className="cart-row total">
             <span>Total</span>
             <span className="amount">₦{totalAmount.toLocaleString()}</span>
           </div>
-
           <button type="submit" className="checkout-button">
             Proceed to Payment
           </button>

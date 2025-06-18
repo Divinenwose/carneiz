@@ -6,13 +6,14 @@ const FeaturedCategories = () => {
   const navigate = useNavigate();
 
   const categories = [
-    { name: "Beef", img: "./images/brisket.png" },
-    { name: "Chicken", img: "./images/chicken thigh.png" },
-    { name: "Pork", img: "./images/pork hock.png" },
-    { name: "Spices", img: "./images/locust bean.png" },
-    { name: "Goat Meat", img: "./images/goat loin.png" },
+    { name: "Beef", img: "./images/beef meat2.jpg" },
+    { name: "Chicken", img: "./images/chicken1.jpg" },
+    { name: "Pork", img: "./images/pork3.jpg" },
+    { name: "Spices", img: "./images/garlic powder.jpg" },
+    { name: "Goat Meat", img: "./images/goat.jpg" },
     { name: "Turkey", img: "./images/turkey.jpg" },
-    { name: "Cat Fish", img: "./images/catfish.jpg" }
+    { name: "Fish", img: "./images/fish3.jpg" },
+    { name: "Gizzard", img: "./images/gizzard.jpg" }
   ];
 
   const handleCategoryClick = () => {

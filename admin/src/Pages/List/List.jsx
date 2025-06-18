@@ -54,7 +54,7 @@ const List = () => {
                             <img src={`${url}/images/` +item.image} alt="" />
                             <p>{item.name}</p>
                             <p>{item.category}</p>
-                            <p>${item.price}</p>
+                            <p>₦{item.price}</p>
                             <p>{item.isFeatured ? "✅ Yes" : "❌ No"}</p>
                             <p onClick={()=>removeProduct(item._id)} className="cursor">X</p>
                         </div>

@@ -28,12 +28,12 @@ const About = () => {
           autoplay: true,
           autoplaySpeed: 2000,
         }}>
-          <div><img src='./images/beef chuck.png' alt="Organic Meat 1" /></div>
-          <div><img src='./images/chicken thigh.png' alt="Organic Meat 2" /></div>
-          <div><img src='./images/goat shoulder.png' alt="Organic Meat 3" /></div>
-          <div><img src='./images/pork hock.png' alt="Organic Meat 4" /></div>
-          <div><img src='./images/goat shoulder.png' alt="Organic Meat 5" /></div>
-          <div><img src='./images/catfish.jpg' alt="Organic Fish" /></div>
+          <div><img src='./images/beef meat.jpg' alt="Organic Meat 1" /></div>
+          <div><img src='./images/beef meat2.jpg' alt="Organic Meat 2" /></div>
+          <div><img src='./images/goat.jpg' alt="Goat meat" /></div>
+          <div><img src='./images/pork.jpg' alt="Pork meat" /></div>
+          <div><img src='./images/fish3.jpg' alt="Fish" /></div>
+          <div><img src='./images/fish.jpg' alt="Fish" /></div>
         </Slider>
       ),
       title: '100% Organic Product',
@@ -45,7 +45,7 @@ const About = () => {
       description: 'Enjoy quick and efficient delivery straight to your doorstep.',
     },
     {
-      icon: <img src='./images/thyme.png' alt="Exquisite Spices" />,
+      icon: <img src='./images/bay leaves.jpg' alt="Exquisite Spices" />,
       title: 'Exquisite Spices',
       description: 'Elevate your cooking with our diverse selection of authentic spices.',
     },
@@ -98,7 +98,7 @@ const About = () => {
         <h2>Visit Our Walk-In Store</h2>
         <p>
           Experience the finest selection of fresh meats and spices in person! 
-          Our walk-in store is located at Owerri MCC Road, where quality meets convenience.
+          Our walk-in store is located at 17 MCC Road Ikenegbu, Owerri, Imo State, Nigeria, where quality meets convenience.
         </p>
         <div className="store-icon">
           <img src="./images/walk in store.png" alt="Walk-In Store Icon" />

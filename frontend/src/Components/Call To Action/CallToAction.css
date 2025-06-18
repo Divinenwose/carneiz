@@ -1,11 +1,12 @@
 .call-to-action {
-  background: url('/images/meat\ cut.jpg') center/cover no-repeat, linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-  padding: 80px 20px;
+  background: url('/images/pork\ cut.jpg') bottom/cover no-repeat, linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+  padding: 120px 20px;
   text-align: center;
   color: white;
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
+  height: 450px;
 }
 
 .call-to-action h2 {

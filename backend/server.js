@@ -19,7 +19,7 @@ const port = 4000
 app.use(cookieParser());
 app.use(express.json())
 app.use(cors({
-    origin: ['https://carneiz.org', 'https://www.carneiz.org', 'https://admin.carneiz.org'], 
+    origin: ['https://carneiz.org', 'https://www.carneiz.org', 'https://admin.carneiz.org', 'http://localhost:5173', 'http://localhost:5174'], 
     credentials: true
   }));
   

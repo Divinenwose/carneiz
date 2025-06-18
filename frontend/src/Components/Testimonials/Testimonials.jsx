@@ -4,21 +4,21 @@ import './Testimonials.css';
 const Testimonials = () => {
     const reviews = [
       {
-        name: "John Doe",
+        name: "Olaniyi Olakunle",
         review: "The best meat I've ever tasted! Perfectly fresh and delivered on time.",
         img: "./images/bobby.jpg",
         rating: 5
       },
       {
-        name: "Jane Smith",
+        name: "Divine Nwose",
         review: "The spices are amazing! They took my cooking to the next level.",
         img: "./images/Divine.jpg",
         rating: 4
       },
       {
-        name: "Dre Williams",
+        name: "Onuigbo Victoria",
         review: "Fantastic quality and flavor! Highly recommended.",
-        img: "./images/bobby.jpg",
+        img: "./images/vicky.jpg",
         rating: 5
       },
       {

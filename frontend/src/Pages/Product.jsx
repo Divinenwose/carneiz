@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./Product.css";
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 const ProductPage = ({ addToCart, cartItems }) => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [priceRange, setPriceRange] = useState([0, 100]);
+  const [priceRange, setPriceRange] = useState([0, 20000]);
   const [selectedCategories, setSelectedCategories] = useState({});
 
   useEffect(() => {
@@ -52,7 +51,6 @@ const ProductPage = ({ addToCart, cartItems }) => {
 
   return (
     <div className="product-page">
-       <ToastContainer position="top-right" autoClose={3000} />
       <div className="filters">
         <div className="search-bar">
           <input
@@ -68,14 +66,14 @@ const ProductPage = ({ addToCart, cartItems }) => {
           <input
             type="range"
             min="0"
-            max="100"
+            max="20000"
             value={priceRange[0]}
             onChange={(e) => setPriceRange([parseInt(e.target.value), priceRange[1]])}
           />
           <input
             type="range"
             min="0"
-            max="100"
+            max="20000"
             value={priceRange[1]}
             onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
           />
@@ -106,7 +104,10 @@ const ProductPage = ({ addToCart, cartItems }) => {
               loading="lazy"
             />
             <h3>{product.name}</h3>
-            <p className="product-price">₦{product.price.toFixed(2)}/kg</p>
+            <p className="product-price">
+              ₦{product.price.toFixed(2)}
+              {(["beef", "turkey", "pork", "goat meat", "chicken", "gizzard"].includes(product.category.toLowerCase())) && "/kg"}
+            </p>
             <button
               onClick={() => {
                 console.log("Product Data:", product); 

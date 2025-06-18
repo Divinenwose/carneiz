@@ -41,7 +41,7 @@ const PromoBanner = () => {
           </button>
           <h2>🎉 Exclusive Offer!</h2>
           <p>
-            Buy any meat worth <strong>1kg</strong> or above and receive 
+            Buy any meat worth <strong>3kg</strong> or above and receive 
             <strong> 0.5L of cooking oil</strong> as an incentive. <br />
             Buy <strong>5kg</strong> or more and get a <strong>10% discount!</strong>
           </p>

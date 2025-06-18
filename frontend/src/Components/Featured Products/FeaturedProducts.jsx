@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import './FeaturedProducts.css';
 
 const FeaturedProducts = ({ addToCart }) => { 
@@ -27,7 +25,6 @@ const FeaturedProducts = ({ addToCart }) => {
 
   return (
     <section className="featured-products">
-      <ToastContainer position="top-right" autoClose={3000} />
       <h2>Featured Products</h2>
       <p className="featured-description">
         Explore our selection of premium meats, ranging from classic cuts to exotic delicacies.
@@ -48,7 +45,10 @@ const FeaturedProducts = ({ addToCart }) => {
                 onError={(e) => e.target.src = './images/default.png'} 
               />
               <h3>{product.name}</h3>
-              <p>₦{(product.price || 0).toFixed(2)}/kg</p>
+              <p className="product-price">
+                ₦{product.price.toFixed(2)}
+                {(["beef", "turkey", "pork", "goat meat", "chicken", "gizzard"].includes(product.category.toLowerCase())) && "/kg"}
+              </p>
               <button onClick={() => addToCart(product)}>Add to Cart</button> 
             </div>
           ))

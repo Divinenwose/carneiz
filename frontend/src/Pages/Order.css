@@ -128,22 +128,24 @@
 @media (max-width: 480px) {
   .order-title {
     font-size: 20px;
-    margin-left: 10px;
+    margin-left: 22px;
     margin-top: 290px;
   }
 
   .order-content {
     gap: 20px;
-    margin-inline:auto ;
   }
 
   .order-form {
     width: 90%;
-    margin-left: 5px; 
+    margin-top: 10px;
+    margin-inline:auto ;
   }
 
   .cart-summary {
     width: 80%; 
-    margin-left: 10px;
+    margin-inline:auto ;
   }
 }
+
+

@@ -17,13 +17,12 @@ const Auth = () => {
   const baseUrl = import.meta.env.VITE_API_URL;
   const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
-  const toggleForm = () => {
-    setIsSignUp(!isSignUp);
-  };
+  const toggleForm = () => setIsSignUp(!isSignUp);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,18 +46,25 @@ const Auth = () => {
 
     try {
       const { data } = await axios.post(fullUrl, payload);
-      toast.success(data.message || "Authenticated successfully!");
+
       localStorage.setItem("adminToken", data.token);
 
-      // If sign-up is successful, show the login modal after a short delay
       if (isSignUp) {
-        setTimeout(() => navigate("/home"), 1500); // navigate to home after sign-up
+        toast.success(data.message || "Signed up successfully! Please log in.");
+        setIsSignUp(false); 
+        setFormData({ name: "", email: "", password: "", confirmPassword: "" }); 
+        recaptchaRef.current?.reset(); 
+        setRecaptchaToken(null);
+      } else {
+        navigate("/verify-otp", { state: { email: formData.email } });
       }
+
     } catch (err) {
       toast.error(err.response?.data?.message || "Something went wrong");
     }
   };
 
+  
   return (
     <div className="auth-container">
       <div className="auth-card">
@@ -101,7 +107,6 @@ const Auth = () => {
             />
           )}
 
-          {/* Show Password Checkbox */}
           <div className="show-password-container">
             <input
               type="checkbox"
@@ -113,6 +118,7 @@ const Auth = () => {
           </div>
 
           <ReCAPTCHA
+            ref={recaptchaRef}
             sitekey={siteKey}
             onChange={(value) => setRecaptchaToken(value)}
             size="normal"

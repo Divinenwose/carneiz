@@ -92,8 +92,8 @@ const Contact = () => {
             <a href="https://www.instagram.com/carneiz_meat_spices/" target="_blank" rel="noopener noreferrer">
               <img src="./images/instagram-icon.png" alt="Instagram" />
             </a>
-            <a href="https://x.com" target="_blank" rel="noopener noreferrer">
-              <img src="./images/x-icon.png" alt="X (Twitter)" />
+            <a href="https://www.tiktok.com/@carneiz?_t=ZN-8xC7kHxtdVW&_r=1" target="_blank" rel="noopener noreferrer">
+              <img src="./images/tik-tok.png" alt="X (Twitter)" className="social-icon" />
             </a>
           </div>
         </div>

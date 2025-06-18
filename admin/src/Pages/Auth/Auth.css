@@ -8,7 +8,6 @@
   margin-inline: auto;
 }
 
-
 .auth-card {
   width: 100%;
   max-width: 400px;
@@ -22,7 +21,6 @@
   align-items: center;
   transition: transform 0.3s ease;
 }
-
 
 .auth-container h2 {
   font-size: 28px;
@@ -103,7 +101,6 @@
   color: #e33c3c;
 }
 
-
 /* Animation for Success/Error Messages */
 @keyframes fadeIn {
   0% {
@@ -134,7 +131,96 @@
   margin-right: 5px;
 }
 
+/* ReCAPTCHA Styles */
+.recaptcha-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+/* OTP Modal */
+.otp-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.otp-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.otp-content h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.otp-content input {
+  padding: 14px;
+  margin-top: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.otp-content button {
+  padding: 14px;
+  background-color: #ff4141;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.otp-content button:hover {
+  background-color: #e33c3c;
+}
+
+.otp-content button:active {
+  transform: translateY(1px);
+}
+
+.otp-content p {
+  font-size: 14px;
+  color: #777;
+  margin-top: 10px;
+}
+
+.otp-content button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Resend Timer */
+.otp-content button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.otp-content button {
+  font-size: 14px;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
   .auth-container {
     margin: 100px auto;
@@ -188,7 +274,7 @@
     max-width: 100%;
   }
 
-  .auth-card{
+  .auth-card {
     padding: 60px;
     max-width: 600px;
     height: 600px;
@@ -209,7 +295,6 @@
     font-size: 12px;
   }
 }
-
 
 @media (max-width: 375px) {
   .auth-container {
@@ -234,5 +319,3 @@
     font-size: 12px;
   }
 }
-
-

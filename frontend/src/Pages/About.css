@@ -1,11 +1,11 @@
 .about-banner {
-  background-image: url('/images/image1.png'); 
+  background-image: url('/images/image3.jpg'); 
   background-size: cover;
   background-position: center;
   padding: 110px 20px;
   text-align: center;
   color: #fff;
-  height: auto;
+  height: 400px;
   margin-top: 120px;
 }
 
@@ -13,7 +13,7 @@
   font-size: 3rem;
   font-weight: bold;
   text-transform: uppercase;
-  margin-top: 70px;
+  margin-top: 90px;
   color: #ff4141; 
   text-align: center;
 }
@@ -59,33 +59,36 @@
 }
 
 .walk-in-store {
-  background: linear-gradient(135deg, #fff, #f9f9f9);
-  padding: 60px 20px;
+  background: url(/images/store.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 30px 20px;
   text-align: center;
-  border-radius: 10px;
-  margin: 50px auto;
-  max-width: 800px;
+  width: 100%;
+  height: 500px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
 }
 
 .walk-in-store h2 {
   font-size: 2.5rem;
   color: #ff4141;
-  margin-bottom: 20px;
+  margin-top: 40px;
   font-weight: bold;
   text-transform: capitalize;
 }
 
 .walk-in-store p {
   font-size: 1.2rem;
-  color: #444;
+  color: #fff;
+  font-weight: 600;
   line-height: 1.8;
   max-width: 700px;
-  margin: 0 auto;
+  margin: 28px auto;
 }
 
 .walk-in-store .store-icon {
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .walk-in-store .store-icon img {
@@ -133,7 +136,7 @@
 
 .choose-icon img {
   width: 320px;
-  height: 270px;
+  height: 300px;
   object-fit: cover;
   margin-bottom: 15px;
   border-radius: 8px;
@@ -148,6 +151,7 @@
 .choose-item p {
   font-size: 1rem;
   color: #555;
+  padding-inline: 20px;
 }
 
 .team-section {
@@ -252,7 +256,95 @@ background-color: #d93737;
 
 @media (max-width: 768px) {
   .choose-grid {
-    flex-direction: column;
     gap: 20px;
   }
+
+  .walk-in-store {
+  height: 300px;
+  }
+
+  .walk-in-store h2 {
+    font-size: 1.8rem;
+    margin-top: 10px;
+  }
+
+  .walk-in-store p {
+    margin-top: 7px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .walk-in-store .store-icon {
+    margin-top: 0;
+  }
+
+  .walk-in-store .store-icon img {
+    width: 70px;
+    height: 70px;
+  }
 }
+
+@media (max-width: 480px) {
+  .choose-grid {
+    flex-direction: column;
+    gap: 20px;
+    margin-inline:30px ;
+  }
+
+  .walk-in-store {
+  height: 300px;
+  }
+
+  .walk-in-store h2 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+
+  .walk-in-store p {
+    margin-top: 7px;
+    font-size: 1.0rem;
+    line-height: 1.5;
+  }
+
+  .walk-in-store .store-icon {
+    margin-top: 0;
+  }
+
+  .walk-in-store .store-icon img {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+@media (max-width: 375px) {
+  .choose-grid {
+    flex-direction: column;
+    gap: 20px;
+    margin-inline:8px ;
+  }
+
+.walk-in-store {
+  height: 300px;
+}
+
+.walk-in-store h2 {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.walk-in-store p {
+  margin-top: 7px;
+  font-size: 1.0rem;
+  line-height: 1.5;
+}
+
+.walk-in-store .store-icon {
+  margin-top: 0;
+}
+
+.walk-in-store .store-icon img {
+  width: 65px;
+  height: 65px;
+}
+}
+
