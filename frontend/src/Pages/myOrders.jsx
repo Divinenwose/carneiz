@@ -29,6 +29,8 @@ const MyOrders = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     if (!userToken) {
       navigate("/cart"); 
     } else {

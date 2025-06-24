@@ -77,7 +77,7 @@ const Navbar = ({ cartItems, setCartItems }) => {
             rel="noopener noreferrer" 
             className="contact-link"
           >
-            17 MCC Road Ikenegbu, Owerri, Imo State
+            17 MCC/Uratta Road, Ikenegbu, Owerri, Imo State
           </a>
         </div>
         <div className="contact-item">

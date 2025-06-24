@@ -1,6 +1,7 @@
 import express from 'express';
 import { body, validationResult } from 'express-validator';
-import { signupAdmin, loginAdmin, logoutAdmin } from '../controllers/adminController.js'; 
+import { signupAdmin, loginAdmin, logoutAdmin, resendOtp } from '../controllers/adminController.js'; 
+
 
 const router = express.Router();
 
@@ -17,7 +18,7 @@ const validateSignup = [
       .withMessage('Password must contain a special character'),
   ];
   
-  // Validation middleware for login
+
   const validateLogin = [
     body('email').isEmail().withMessage('Please enter a valid email address'),
     body('password').notEmpty().withMessage('Password cannot be empty'),
@@ -26,6 +27,6 @@ const validateSignup = [
 router.post('/signup', validateSignup, signupAdmin);
 router.post('/login', validateLogin, loginAdmin);
 router.get('/logout', logoutAdmin);
-
+router.post("/resend-otp", resendOtp);
 
 export default router;

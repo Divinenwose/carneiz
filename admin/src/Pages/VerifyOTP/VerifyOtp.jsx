@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "../Auth/Auth.css";
+import "./VerifyOtp.css";
 
 const VerifyOtp = () => {
   const [otp, setOtp] = useState("");
@@ -39,11 +39,14 @@ const VerifyOtp = () => {
   };
 
   const handleOtpSubmit = async () => {
+    if (!otp) return toast.error("Enter your OTP");
+
     try {
       const { data } = await axios.post(`${baseUrl}/api/admin/verify-otp`, {
         email,
         otp,
       });
+
       toast.success(data.message || "OTP verified!");
       setTimeout(() => navigate("/home"), 1500);
     } catch (err) {
@@ -57,13 +60,13 @@ const VerifyOtp = () => {
       toast.success("OTP resent to your email");
       startResendTimer();
     } catch (err) {
-      toast.error("Failed to resend OTP");
+      toast.error(err.response?.data?.message || "Failed to resend OTP");
     }
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
+    <div className="otp-auth-container">
+      <div className="otp-auth-card">
         <h2>Verify OTP</h2>
         <input
           type="text"

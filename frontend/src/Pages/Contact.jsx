@@ -80,7 +80,7 @@ const Contact = () => {
           <h2>Contact Information</h2>
           <p>Feel free to reach us through the following channels:</p>
           <ul>
-            <li><strong>Address:</strong> 17 MCC Road Ikenegbu, Owerri, Imo State, Nigeria</li>
+            <li><strong>Address:</strong> 17 MCC/Uratta Road Ikenegbu, Owerri, Imo State, Nigeria</li>
             <li><strong>Phone:</strong> +2347075723880</li>
             <li><strong>Email:</strong> info@carneiz.com</li>
           </ul>

@@ -14,7 +14,7 @@ const App = () => {
   const location = useLocation();
   const isLoggedIn = Boolean(localStorage.getItem("adminToken"));
 
-  // Exclude navbar/sidebar on auth and verify-otp pages
+  
   const isAuthPage = location.pathname === "/auth" || location.pathname === "/verify-otp";
 
   useEffect(() => {
@@ -25,7 +25,6 @@ const App = () => {
 
   return (
     <div>
-      {/* Show only if not on /auth or /verify-otp */}
       {isLoggedIn && !isAuthPage && <Navbar />}
       <hr />
       <div className="app-content">

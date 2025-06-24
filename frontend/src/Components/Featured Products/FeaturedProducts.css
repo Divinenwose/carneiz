@@ -175,8 +175,19 @@
     grid-template-columns: 1fr;
     margin-inline:auto;
   }
-
-
 }
+
+@media (max-width: 375px) {
+  .featured-products h2 {
+    font-size: 2rem;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    margin-inline:auto;
+  }
+}
+
+
 
 

@@ -92,6 +92,53 @@ export const loginAdmin = async (req, res) => {
 
 };
 
+export const resendOtp = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await Admin.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "Admin not found" });
+    }
+
+    // Generate a new OTP
+    const otp = speakeasy.totp({
+      secret: process.env.OTP_SECRET,
+      encoding: "base32",
+    });
+
+    // Send OTP to email
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: user.email,
+      subject: "Resent OTP for Login",
+      text: `Your new OTP is: ${otp}`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error("Failed to resend OTP:", error);
+        return res.status(500).json({ message: "Failed to resend OTP" });
+      }
+
+      return res.status(200).json({ message: "OTP resent successfully" });
+    });
+
+  } catch (error) {
+    console.error("Error resending OTP:", error);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
+
+
 export const logoutAdmin = (req, res) => {
   res.status(200).json({ message: 'Logout successful' });
 };

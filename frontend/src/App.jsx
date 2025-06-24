@@ -10,21 +10,31 @@ import Cart from "./Pages/Cart";
 import Order from "./Pages/Order";
 import PromoBanner from "./Components/Promo Banner/PromoBanner";
 import MyOrders from "./Pages/myOrders"
+import Preloader from "./Components/Preloader/Preloader.jsx"; 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
   const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    if (token) {
-      fetchCart();
-    } else {
-      loadGuestCart();
-    }
+    const initializeCart = async () => {
+      if (token) {
+        await fetchCart();
+      } else {
+        loadGuestCart();
+      }
+      await new Promise((resolve) => setTimeout(resolve, 4000));
+      setLoading(false);
+    };
+
+    initializeCart();
   }, [token]);
+
+
 
   const fetchCart = async () => {
     try {
@@ -173,16 +183,17 @@ const App = () => {
       toast.info("Item removed from cart.");
     }
   };
-  
-  
-  return (
+
+  return loading ? (
+   <Preloader />
+  ) : (
     <div className="App">
       <ToastContainer position="top-right" autoClose={3000} />
       <PromoBanner />
       <Navbar cartItems={cartItems} setCartItems={setCartItems} />
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="/home" element={<Home  addToCart={addToCart}  cartItems={cartItems}/>} />
+        <Route path="/home" element={<Home addToCart={addToCart} cartItems={cartItems} />} />
         <Route path="/product" element={<Product addToCart={addToCart} cartItems={cartItems} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -192,6 +203,7 @@ const App = () => {
       </Routes>
     </div>
   );
+
 };
 
 export default App;

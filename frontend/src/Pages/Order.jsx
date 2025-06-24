@@ -15,12 +15,11 @@ const imoCities = [
 const Order = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { subtotal = 0, deliveryFee = 2500, discount = 0, cartItems = [] } = location.state || {};
+  const { subtotal = 0, deliveryFee = 2500, cartItems = [], discountAmount = 0, promoApplied = false } = location.state || {};
 
   const totalAmount = useMemo(() => {
-    const discounted = subtotal * (discount / 100);
-    return subtotal + deliveryFee - discounted;
-  }, [subtotal, deliveryFee, discount]);
+   return subtotal + deliveryFee - discountAmount;
+  }, [subtotal, deliveryFee, discountAmount]);
 
 
   useEffect(() => {
@@ -248,16 +247,12 @@ const Order = () => {
             <span>Delivery Fee</span>
             <span className="amount">₦{deliveryFee.toLocaleString()}</span>
           </div>
-          <div className="cart-row">
-            <span>Discount</span>
-            <span className="amount">
-              -{discount}% (
-              ₦{((subtotal * discount) / 100).toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-              })}
-              )
-            </span>
-          </div>
+          {promoApplied && (
+            <div className="cart-row">
+              <span>Discount</span>
+              <span className="amount">- ₦{discountAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+            </div>
+          )}
           <div className="cart-row total">
             <span>Total</span>
             <span className="amount">₦{totalAmount.toLocaleString()}</span>

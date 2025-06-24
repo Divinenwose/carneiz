@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-logo-address">
           <img src={Logo} alt="Logo" className="footer-logo" />
-          <p>17 MCC Road Ikenegbu, Owerri, Imo State</p>
+          <p>17 MCC/Uratta Road Ikenegbu, Owerri, Imo State</p>
           <p>Phone: +2347075723880</p>
           <p>Email: info@carneiz.com</p>
         </div>

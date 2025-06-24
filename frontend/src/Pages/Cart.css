@@ -10,7 +10,7 @@
 }
 
 .cart-page p {
-  margin-bottom: 150px;
+  margin-bottom: 20px;
 }
 
 .cart-table {
@@ -354,20 +354,20 @@
   }
 }
 
-
-
+        
 @media (max-width: 400px) {
   .cart-table thead {
     display: none;
   }
 
-  .cart-table,
-  .cart-table tbody,
-  .cart-table tr,
-  .cart-table td {
+  .cart-page .cart-table,
+  .cart-page .cart-table tbody,
+  .cart-page .cart-table tr,
+  .cart-page .cart-table td {
     display: block;
     width: 100%;
   }
+
 
   .cart-table tr {
     margin-bottom: 20px;
@@ -383,6 +383,7 @@
     align-items: center;
     padding: 6px 0;
     font-size: 18px;
+    font-weight: 600;
     border-bottom: 1px solid #ccc;
   }
 

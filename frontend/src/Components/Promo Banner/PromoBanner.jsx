@@ -3,14 +3,29 @@ import "./PromoBanner.css";
 
 const PromoBanner = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const [animationKey, setAnimationKey] = useState(Date.now()); 
+  const [animationKey, setAnimationKey] = useState(Date.now());
 
-  const [timeLeft, setTimeLeft] = useState(() => {
+  const getOrSetTargetDate = () => {
+    const storedDate = localStorage.getItem("promoTargetDate");
+
+    if (storedDate) {
+      return new Date(storedDate);
+    } else {
+      const now = new Date();
+      const targetDate = new Date(now);
+      targetDate.setMonth(now.getMonth() + 1); // 1 month ahead
+      localStorage.setItem("promoTargetDate", targetDate.toISOString());
+      return targetDate;
+    }
+  };
+
+  const calculateTimeLeft = (targetDate) => {
     const now = new Date();
-    const targetDate = new Date(now);
-    targetDate.setMonth(now.getMonth() + 1); 
-    return Math.floor((targetDate - now) / 1000); 
-  });
+    return Math.max(0, Math.floor((targetDate - now) / 1000)); // in seconds
+  };
+
+  const [targetDate] = useState(getOrSetTargetDate);
+  const [timeLeft, setTimeLeft] = useState(() => calculateTimeLeft(targetDate));
 
   useEffect(() => {
     setAnimationKey(Date.now());
@@ -19,7 +34,10 @@ const PromoBanner = () => {
   useEffect(() => {
     if (timeLeft <= 0) return;
     const timer = setInterval(() => {
-      setTimeLeft((prevTime) => prevTime - 1);
+      setTimeLeft((prev) => {
+        const newTime = prev - 1;
+        return newTime >= 0 ? newTime : 0;
+      });
     }, 1000);
     return () => clearInterval(timer);
   }, [timeLeft]);
@@ -33,7 +51,8 @@ const PromoBanner = () => {
   };
 
   return (
-    isOpen && (
+    isOpen &&
+    timeLeft > 0 && (
       <div className="promo-modal">
         <div key={animationKey} className="promo-content">
           <button className="close-btn" onClick={() => setIsOpen(false)}>
@@ -43,7 +62,7 @@ const PromoBanner = () => {
           <p>
             Buy any meat worth <strong>3kg</strong> or above and receive 
             <strong> 0.5L of cooking oil</strong> as an incentive. <br />
-            Buy <strong>5kg</strong> or more and get a <strong>10% discount!</strong>
+            Buy <strong>5kg</strong> or more and get <strong>₦1000 discount!</strong> in addition to <strong> 0.5L of cooking oil.</strong>
           </p>
           <p className="countdown">⏳ Offer ends in: {formatTime(timeLeft)}</p>
         </div>
