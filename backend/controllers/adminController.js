@@ -138,6 +138,35 @@ export const resendOtp = async (req, res) => {
   }
 };
 
+export const verifyOtp = async (req, res) => {
+  const { email, otp } = req.body;
+
+  try {
+    const user = await Admin.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "Admin not found" });
+    }
+
+    const verified = speakeasy.totp.verify({
+      secret: process.env.OTP_SECRET,
+      encoding: "base32",
+      token: otp,
+      window: 2, // allows 1-step before or after (to tolerate small delays)
+    });
+
+    if (!verified) {
+      return res.status(400).json({ message: "Invalid OTP" });
+    }
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+
+    return res.status(200).json({ message: "OTP verified successfully", token });
+  } catch (error) {
+    console.error("OTP verification error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 
 export const logoutAdmin = (req, res) => {
   res.status(200).json({ message: 'Logout successful' });

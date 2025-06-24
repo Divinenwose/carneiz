@@ -1,6 +1,6 @@
 import express from 'express';
 import { body, validationResult } from 'express-validator';
-import { signupAdmin, loginAdmin, logoutAdmin, resendOtp } from '../controllers/adminController.js'; 
+import { signupAdmin, loginAdmin, logoutAdmin, resendOtp, verifyOtp } from '../controllers/adminController.js'; 
 
 
 const router = express.Router();
@@ -28,5 +28,7 @@ router.post('/signup', validateSignup, signupAdmin);
 router.post('/login', validateLogin, loginAdmin);
 router.get('/logout', logoutAdmin);
 router.post("/resend-otp", resendOtp);
+router.post('/verify-otp', verifyOtp);
+
 
 export default router;
