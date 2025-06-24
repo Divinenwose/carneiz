@@ -360,10 +360,10 @@
     display: none;
   }
 
-  .cart-page .cart-table,
-  .cart-page .cart-table tbody,
-  .cart-page .cart-table tr,
-  .cart-page .cart-table td {
+  .cart-table,
+  .cart-table tbody,
+  .cart-table tr,
+  .cart-table td {
     display: block;
     width: 100%;
   }
