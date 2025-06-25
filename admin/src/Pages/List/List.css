@@ -19,14 +19,13 @@
 @media (max-width: 600px) {
   .list-table-format {
     overflow-x: auto;
-    display: block;
+    gap: 5px;
     white-space: nowrap;
     padding: 12px;
   }
 
   .list-table-format.title {
-    display: block;
-    background-color: #f1f1f1;
+    gap: 5px;
     font-weight: bold;
   }
 
