@@ -277,6 +277,7 @@
   
   .navbar-contact {
     font-size: 12px;
+    width: 80%;
   }
 
   .navbar-contact .contact-item img {
@@ -308,6 +309,7 @@
   
   .navbar-contact {
     font-size: 12px;
+    width: 80%;
   }
 
   .navbar-contact .contact-item img {
@@ -381,6 +383,7 @@
     align-items: start;
     font-size: 12px;
     padding-left: 10px;
+
   }
 
   .login-btn{
@@ -491,6 +494,8 @@
     font-size: 14px;
     padding-right: 69px;
     padding-block: 15px;
+    width: 96%;
+    gap: 4px;
   }
 
   .nav-cart-icon{

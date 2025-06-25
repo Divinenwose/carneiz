@@ -61,3 +61,78 @@
     cursor: pointer;
     accent-color: #ff4141; 
 }
+
+@media (max-width: 768px) {
+  .add {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    font-size: 15px;
+  }
+
+  .add-img-upload img {
+    width: 100px;
+  }
+
+  .add-product-name,
+  .add-product-description {
+    width: 100%;
+  }
+
+  .add-product-name input,
+  .add-product-description textarea {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .add-category-price {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .add-category-price select,
+  .add-category-price input {
+    width: 100%;
+    max-width: none;
+  }
+
+  .add-btn {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .add-featured {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .add-featured p {
+    font-size: 15px;
+  }
+
+  .add-featured input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .add {
+    font-size: 14px;
+  }
+
+  .add-img-upload img {
+    width: 80px;
+  }
+
+  .add-btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .add-featured p {
+    font-size: 14px;
+  }
+}
+
