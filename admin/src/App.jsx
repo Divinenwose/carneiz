@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Add from './Pages/Add/Add.jsx';
 import Orders from "./Pages/Orders/Orders.jsx";
 import List from "./Pages/List/List.jsx";

@@ -1,14 +1,13 @@
 import React from "react";
-import Add from "../Add/Add";
-import List from "../List/List";
-import Orders from "../Orders/Orders";
+import "./Home.css"; 
 
 const HomePage = () => {
   return (
-    <div>
-        <Add />
-        <List />
-        <Orders />
+    <div className="dashboard-container">
+      <div className="dashboard-content">
+        <h2>Welcome to the Admin Dashboard</h2>
+        <p>Please select an option from the sidebar.</p>
+      </div>
     </div>
   );
 };
