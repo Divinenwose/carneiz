@@ -1,12 +1,11 @@
 .dashboard-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 80px); 
-  padding: 20px;
+  align-items: flex-start; 
+  min-height: calc(100vh - 80px);
+  padding: 60px 20px 20px; 
   box-sizing: border-box;
   text-align: center;
-  background-color: #f9f9f9; 
 }
 
 .dashboard-content {
@@ -16,26 +15,25 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   width: 100%;
+  margin-top: 20px; 
 }
 
 .dashboard-content h2 {
-  font-size: clamp(1.5rem, 2.5vw, 2rem); 
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   margin-bottom: 15px;
   color: #333;
 }
 
 .dashboard-content p {
-  font-size: clamp(1rem, 2vw, 1.2rem); 
+  font-size: clamp(1rem, 2vw, 1.2rem);
   color: #555;
 }
-
 
 @media (max-width: 768px) {
   .dashboard-content {
     padding: 6vw;
   }
 }
-
 
 @media (max-width: 480px) {
   .dashboard-content {
