@@ -136,3 +136,44 @@
   }
 }
 
+@media (max-width: 375px) {
+  .add {
+    font-size: 13px;
+    margin-top: 20px;
+  }
+
+  .add-img-upload img {
+    width: 70px;
+  }
+
+  .add-product-name input,
+  .add-product-description textarea {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .add-category-price {
+    gap: 12px;
+  }
+
+  .add-category-price select,
+  .add-category-price input {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .add-btn {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .add-featured p {
+    font-size: 13px;
+  }
+
+  .add-featured input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+  }
+}
+
