@@ -25,14 +25,33 @@ const App = () => {
       if (token) {
         const guestCart = JSON.parse(localStorage.getItem("guestCart") || "[]");
 
+        
         if (guestCart.length > 0) {
-          for (const item of guestCart) {
-            try {
+          try {
+           
+            const response = await axios.post(
+              `${apiUrl}api/cart/get`,
+              {},
+              { headers: { Authorization: `Bearer ${token}` } }
+            );
+
+            const serverCart = response.data.cart || [];
+
+           
+            for (const guestItem of guestCart) {
+              const match = serverCart.find(
+                (serverItem) => serverItem.product?._id === guestItem.product._id
+              );
+
+              const newQuantity = match
+                ? guestItem.quantity + match.quantity
+                : guestItem.quantity;
+
               await axios.post(
                 `${apiUrl}api/cart/add`,
                 {
-                  productId: item.product._id,
-                  quantity: item.quantity,
+                  productId: guestItem.product._id,
+                  quantity: newQuantity,
                 },
                 {
                   headers: {
@@ -40,13 +59,13 @@ const App = () => {
                   },
                 }
               );
-            } catch (err) {
-              console.error("Error merging guest cart item:", err.response?.data || err.message);
             }
-          }
 
           
-          localStorage.removeItem("guestCart");
+            localStorage.removeItem("guestCart");
+          } catch (err) {
+            console.error("Error merging guest cart:", err.response?.data || err.message);
+          }
         }
 
         await fetchCart(); 
