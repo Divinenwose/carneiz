@@ -23,6 +23,7 @@ const App = () => {
   useEffect(() => {
     const initializeCart = async () => {
       if (token) {
+        localStorage.removeItem("guestCart"); 
         await fetchCart();
       } else {
         loadGuestCart();
@@ -33,7 +34,6 @@ const App = () => {
 
     initializeCart();
   }, [token]);
-
 
 
   const fetchCart = async () => {
@@ -93,6 +93,8 @@ const App = () => {
 
   const addToCart = async (product) => {
     if (token) {
+      localStorage.removeItem("guestCart");
+      
       try {
         const response = await axios.post(
           `${apiUrl}api/cart/add`,
