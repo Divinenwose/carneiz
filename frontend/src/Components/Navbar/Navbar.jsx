@@ -47,7 +47,8 @@ const Navbar = ({ cartItems, setCartItems }) => {
         
         localStorage.removeItem("token");
 
-        
+        localStorage.removeItem("mergedGuestCart");
+
         localStorage.setItem("guestCart", JSON.stringify(currentCart));
 
         

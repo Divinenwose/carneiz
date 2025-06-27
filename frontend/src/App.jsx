@@ -24,11 +24,10 @@ const App = () => {
     const initializeCart = async () => {
       if (token) {
         const guestCart = JSON.parse(localStorage.getItem("guestCart") || "[]");
+        const alreadyMerged = localStorage.getItem("mergedGuestCart");
 
-        
-        if (guestCart.length > 0) {
+        if (guestCart.length > 0 && !alreadyMerged) {
           try {
-           
             const response = await axios.post(
               `${apiUrl}api/cart/get`,
               {},
@@ -37,39 +36,31 @@ const App = () => {
 
             const serverCart = response.data.cart || [];
 
-           
             for (const guestItem of guestCart) {
               const match = serverCart.find(
                 (serverItem) => serverItem.product?._id === guestItem.product._id
               );
 
-              const newQuantity = match
-                ? guestItem.quantity + match.quantity
-                : guestItem.quantity;
-
               await axios.post(
                 `${apiUrl}api/cart/add`,
                 {
                   productId: guestItem.product._id,
-                  quantity: newQuantity,
+                  quantity: guestItem.quantity,
                 },
-                {
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                  },
-                }
+                { headers: { Authorization: `Bearer ${token}` } }
               );
             }
 
-          
+            localStorage.setItem("mergedGuestCart", "true");
             localStorage.removeItem("guestCart");
           } catch (err) {
             console.error("Error merging guest cart:", err.response?.data || err.message);
           }
         }
 
-        await fetchCart(); 
+        await fetchCart();
       } else {
+        localStorage.removeItem("mergedGuestCart"); // <-- Reset on logout
         loadGuestCart();
       }
 
@@ -79,6 +70,7 @@ const App = () => {
 
     initializeCart();
   }, [token]);
+
 
 
   const fetchCart = async () => {
