@@ -23,29 +23,31 @@ const App = () => {
   useEffect(() => {
     const initializeCart = async () => {
       if (token) {
-        const guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
+        const guestCart = JSON.parse(localStorage.getItem("guestCart") || "[]");
 
-        for (const item of guestCart) {
-          try {
-            await axios.post(
-              `${apiUrl}api/cart/add`,
-              {
-                productId: item.product._id,
-                quantity: item.quantity,
-              },
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
+        if (guestCart.length > 0) {
+          for (const item of guestCart) {
+            try {
+              await axios.post(
+                `${apiUrl}api/cart/add`,
+                {
+                  productId: item.product._id,
+                  quantity: item.quantity,
                 },
-              }
-            );
-          } catch (err) {
-            console.error("Error merging guest cart item:", err.response?.data || err.message);
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                }
+              );
+            } catch (err) {
+              console.error("Error merging guest cart item:", err.response?.data || err.message);
+            }
           }
-        }
 
-        
-        localStorage.removeItem("guestCart");
+          
+          localStorage.removeItem("guestCart");
+        }
 
         await fetchCart(); 
       } else {
@@ -58,8 +60,6 @@ const App = () => {
 
     initializeCart();
   }, [token]);
-
-
 
 
   const fetchCart = async () => {
@@ -119,8 +119,6 @@ const App = () => {
 
   const addToCart = async (product) => {
     if (token) {
-      localStorage.removeItem("guestCart");
-
       try {
         const response = await axios.post(
           `${apiUrl}api/cart/add`,
