@@ -35,9 +35,6 @@ const Navbar = ({ cartItems, setCartItems }) => {
     setCartCount(totalItems);
   }, [cartItems]);
 
-  useEffect(() => {
-    setCartCount(cartItems.length > 0 ? cartItems.reduce((sum, item) => sum + item.quantity, 0) : 0);
-  }, [cartItems]);
 
   const handleLogout = async () => {
     try {
@@ -56,6 +53,8 @@ const Navbar = ({ cartItems, setCartItems }) => {
         
         setIsLoggedIn(false);
         setCartItems([...currentCart]); 
+        const totalItems = currentCart.reduce((sum, item) => sum + item.quantity, 0);
+        setCartCount(totalItems);
         toast.success("Logged out successfully!");
 
         console.log("Cart after logout:", currentCart);
@@ -134,7 +133,7 @@ const Navbar = ({ cartItems, setCartItems }) => {
               />
               {dropdownOpen && (
                 <div className="dropdown-menu">
-                  <Link to="/myorders" className="dropdown-item">
+                  <Link to="/myOrders" className="dropdown-item">
                     <img src={order_icon} alt="Orders" className="dropdown-icon" /> Orders
                   </Link>
                   <hr className="dropdown-divider" />

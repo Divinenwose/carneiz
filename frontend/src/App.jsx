@@ -99,7 +99,7 @@ const App = () => {
         );
   
         if (response.data.success) {
-          fetchCart(); 
+          await fetchCart(); 
           toast.success(`${product.name} added to cart!`);
         } else {
           toast.error("Failed to add item to cart.");
