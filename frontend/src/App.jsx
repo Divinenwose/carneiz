@@ -43,8 +43,10 @@ const App = () => {
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
+
+      const validCart = response.data.cart.filter((item) => item.product);
   
-      const formattedCart = response.data.cart.map((item) => ({
+      const formattedCart = validCart.map((item) => ({
         product: {
           _id: item.product._id,
           name: item.product.name,
@@ -164,7 +166,7 @@ const App = () => {
         );
   
         if (response.data.success) {
-          fetchCart(); 
+          await fetchCart();
           toast.info("Item removed from cart.");
         } else {
           toast.error("Failed to remove item from cart.");
