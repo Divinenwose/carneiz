@@ -44,11 +44,10 @@ const App = () => {
           }
         }
 
-        // ✅ Clean up guest cart after merge
+        
         localStorage.removeItem("guestCart");
 
-        // ✅ Then fetch full server cart
-        await fetchCart();
+        await fetchCart(); 
       } else {
         loadGuestCart();
       }
@@ -59,6 +58,7 @@ const App = () => {
 
     initializeCart();
   }, [token]);
+
 
 
 
