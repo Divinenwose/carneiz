@@ -23,17 +23,43 @@ const App = () => {
   useEffect(() => {
     const initializeCart = async () => {
       if (token) {
-        localStorage.removeItem("guestCart"); 
+        const guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
+
+        for (const item of guestCart) {
+          try {
+            await axios.post(
+              `${apiUrl}api/cart/add`,
+              {
+                productId: item.product._id,
+                quantity: item.quantity,
+              },
+              {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            );
+          } catch (err) {
+            console.error("Error merging guest cart item:", err.response?.data || err.message);
+          }
+        }
+
+        // ✅ Clean up guest cart after merge
+        localStorage.removeItem("guestCart");
+
+        // ✅ Then fetch full server cart
         await fetchCart();
       } else {
         loadGuestCart();
       }
+
       await new Promise((resolve) => setTimeout(resolve, 4000));
       setLoading(false);
     };
 
     initializeCart();
   }, [token]);
+
 
 
   const fetchCart = async () => {
@@ -94,7 +120,7 @@ const App = () => {
   const addToCart = async (product) => {
     if (token) {
       localStorage.removeItem("guestCart");
-      
+
       try {
         const response = await axios.post(
           `${apiUrl}api/cart/add`,
