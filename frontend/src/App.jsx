@@ -28,19 +28,7 @@ const App = () => {
 
         if (guestCart.length > 0 && !alreadyMerged) {
           try {
-            const response = await axios.post(
-              `${apiUrl}api/cart/get`,
-              {},
-              { headers: { Authorization: `Bearer ${token}` } }
-            );
-
-            const serverCart = response.data.cart || [];
-
             for (const guestItem of guestCart) {
-              const match = serverCart.find(
-                (serverItem) => serverItem.product?._id === guestItem.product._id
-              );
-
               await axios.post(
                 `${apiUrl}api/cart/add`,
                 {
@@ -57,10 +45,8 @@ const App = () => {
             console.error("Error merging guest cart:", err.response?.data || err.message);
           }
         }
-
         await fetchCart();
       } else {
-        localStorage.removeItem("mergedGuestCart"); // <-- Reset on logout
         loadGuestCart();
       }
 
