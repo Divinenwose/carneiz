@@ -28,7 +28,27 @@ const App = () => {
 
         if (guestCart.length > 0 && !alreadyMerged) {
           try {
+            const serverResponse = await axios.post(
+              `${apiUrl}api/cart/get`, 
+              {},
+              { headers: { Authorization: `Bearer ${token}` } }
+            );
+
+            const serverCart = serverResponse.data.cart || [];
+
             for (const guestItem of guestCart) {
+              const existingServerItem = serverCart.find(
+                (serverItem) => serverItem.product?._id === guestItem.product._id
+              );
+
+              if (existingServerItem) {
+                await axios.post(
+                  `${apiUrl}api/cart/remove`,
+                  { productId: guestItem.product._id },
+                  { headers: { Authorization: `Bearer ${token}` } }
+                );
+              }
+              
               await axios.post(
                 `${apiUrl}api/cart/add`,
                 {
@@ -56,7 +76,6 @@ const App = () => {
 
     initializeCart();
   }, [token]);
-
 
 
   const fetchCart = async () => {
