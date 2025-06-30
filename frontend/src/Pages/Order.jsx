@@ -144,7 +144,7 @@ const Order = () => {
             });
 
             if (res.ok) {
-              navigate("/myorders");
+              navigate("/myOrders");
             } else {
               const err = await res.json();
               console.error("Order saving failed:", err);
