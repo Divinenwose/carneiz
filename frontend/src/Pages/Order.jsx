@@ -108,7 +108,8 @@ const Order = () => {
 
     handleFlutterPayment({
       callback: async (response) => {
-        if (response.status === "successful") {
+        console.log("FLW Response:", response);
+        if (response && response.transaction_id){
           console.log("Payment successful:", response);
 
           const orderData = {
