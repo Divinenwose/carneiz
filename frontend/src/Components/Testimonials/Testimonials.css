@@ -90,6 +90,9 @@
   }
 
   .testimonial-grid {
+      grid-template-columns: 1fr;
+      margin-inline: auto;
+      max-width: 320px;
       gap: 25px;
   }
 
