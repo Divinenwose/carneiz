@@ -212,8 +212,10 @@
   }
 
   .product-page .products-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
+
 
   .product-page .product-card img {
   height: 390px;
