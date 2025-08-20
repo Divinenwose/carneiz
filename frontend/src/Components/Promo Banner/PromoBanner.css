@@ -13,7 +13,7 @@
 }
 
 .promo-content {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   padding: 33px;
   width: 80%;
   max-width: 600px;
@@ -25,12 +25,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 
+  /* Animation */
   transform-origin: top center;
   animation: ropeDrop 1s ease-in-out, swing 1s ease-in-out 1s infinite alternate;
 }
-
 
 @keyframes ropeDrop {
   0% {
@@ -45,7 +44,6 @@
     transform: translateY(0) rotate(0deg);
   }
 }
-
 
 @keyframes swing {
   0% {
@@ -69,23 +67,18 @@
 
 .promo-content h2 {
   color: #ff4141;
-  font-size: 24px;
+  font-size: 26px;
   margin-bottom: 15px;
+  font-weight: bold;
 }
 
 .promo-content p {
   font-size: 18px;
   color: #333;
   margin-bottom: 15px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-.promo-content .countdown {
-  font-weight: bold;
-  color: #ff4141;
-  font-size: 18px;
-  margin-top: 10px;
-}
 
 @media (max-width: 1024px) {
   .promo-content {
@@ -111,13 +104,43 @@
     max-height: 40vh;
     top: 30px;
   }
+
+  .promo-content h2 {
+    color: #ff4141;
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .promo-content p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.6;
+  }
 }
 
 @media (max-width: 375px) {
   .promo-content {
-    width: 95%;
+    width: 90%;
     min-height: 40vh;
     max-height: 60vh;
     top: 60px;
+  }
+
+  .promo-content h2 {
+    color: #ff4141;
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+
+  .promo-content p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.6;
   }
 }

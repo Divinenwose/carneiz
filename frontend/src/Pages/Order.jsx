@@ -7,7 +7,7 @@ import { jwtDecode } from "jwt-decode";
 import Logo from "../assets/logo2.jpg";
 
 const imoCities = [
-  "Owerri", "Orlu", "Okigwe", "Mbaise", "Oguta", "Mbano", "Nkwerre", "Isu", "Ideato North", "Ideato South",
+  "Owerri", "Orlu", "Okigwe", "Mbaise", "Mbaitoli", "Oguta", "Mbano", "Nkwerre", "Isu", "Ideato North", "Ideato South",
   "Ezinihitte", "Ngor Okpala", "Obowo", "Ihitte Uboma", "Nwangele", "Ohaji/Egbema", "Oru East", "Oru West",
   "Isiala Mbano", "Onuimo", "Aboh Mbaise", "Ehime Mbano"
 ];
