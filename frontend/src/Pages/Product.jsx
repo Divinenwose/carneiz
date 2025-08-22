@@ -79,19 +79,20 @@ const ProductPage = ({ addToCart, cartItems }) => {
           />
           <span>₦{priceRange[0]} - ₦{priceRange[1]}</span>
         </div>
-
         <div className="category-filter">
           <h3>Categories</h3>
-          {Object.keys(selectedCategories).map((category) => (
-            <label key={category}>
-              <input
-                type="checkbox"
-                checked={selectedCategories[category]}
-                onChange={() => handleCategoryChange(category)}
-              />
-              {category}
-            </label>
-          ))}
+          <div className="category-options">
+            {Object.keys(selectedCategories).map((category) => (
+              <label key={category}>
+                <input
+                  type="checkbox"
+                  checked={selectedCategories[category]}
+                  onChange={() => handleCategoryChange(category)}
+                />
+                {category}
+              </label>
+            ))}
+          </div>
         </div>
       </div>
 

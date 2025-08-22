@@ -271,22 +271,27 @@
 
  
 @media screen and (max-width: 375px) {
-  .navbar{
-    padding-top: 100px;
-  }
-  
   .navbar-contact {
     font-size: 12px;
     width: 80%;
+    top: -30px;
+    padding-top: 34px;
   }
 
+  .navbar-container .navbar{
+    padding-top: 0px;
+    height: 230px;
+  }
+  
+
   .navbar-contact .contact-item img {
-    width: 20px;
+    width: 15px;
   }
 
   .nav-menu {
     font-size: 16px;
   }
+
 
   .nav-logo .nav-logo-img {
     width: 47px;
@@ -331,7 +336,8 @@
 
 @media screen and (max-width: 430px) {
   .navbar{
-    padding-top: 100px;
+    height: 245px;
+    padding-top: 70px;
   }
   
   .navbar-contact {
@@ -400,7 +406,7 @@
 @media screen and (max-width: 765px) {
   .menu-icon {
     display: block;
-    margin-top: 100px;
+    margin-top: 145px;
   }
 
   .navbar {
@@ -429,7 +435,7 @@
   }
 
   .nav-logo .nav-logo-img{
-    margin-top: 70px;
+    margin-top: 118px;
   }
 
   .user-icon{
@@ -465,7 +471,7 @@
   }
 
   .nav-cart-icon .cart-container {
-    margin-top: 90px;
+    margin-top: 136px;
     margin-right: 40px;
   }
 }
