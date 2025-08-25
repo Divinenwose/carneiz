@@ -358,7 +358,7 @@
 
 @media (max-width: 430px) {
   .slider-item {
-    margin-top: 110px;
+    margin-top: 80px;
   }
   .slider-image {
     height: 50vh;
@@ -388,7 +388,7 @@
 
 @media (max-width: 375px) {
   .slider-item {
-    margin-top: 110px;
+    margin-top: 80px;
   }
   .slider-image {
     height: 50vh;

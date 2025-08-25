@@ -269,25 +269,22 @@
 
 
 
- 
+
+
 @media screen and (max-width: 375px) {
   .navbar-contact {
-    font-size: 12px;
+    font-size: 10px;
     width: 80%;
-    top: -30px;
+    top: -34px;
     padding-top: 34px;
+    height: 127px;
   }
 
   .navbar-container .navbar{
     padding-top: 0px;
-    height: 230px;
+    height: 200px;
   }
   
-
-  .navbar-contact .contact-item img {
-    width: 15px;
-  }
-
   .nav-menu {
     font-size: 16px;
   }
@@ -307,9 +304,18 @@
   }
 }
 
-@media screen and (max-width: 390px) {
-  .navbar{
-    padding-top: 100px;
+@media screen and (width: 390px) {
+  .navbar-contact {
+    font-size: 12px;
+    width: 80%;
+    top: -34px;
+    padding-top: 34px;
+    height: 127px;
+  }
+
+  .navbar-container .navbar{
+    padding-top: 0px;
+    height: 200px;
   }
   
   .navbar-contact {
@@ -335,17 +341,21 @@
 }
 
 @media screen and (max-width: 430px) {
-  .navbar{
-    height: 245px;
-    padding-top: 70px;
+  .navbar-container .navbar{
+    height: 200px;
+    padding-top: 0px;
   }
   
   .navbar-contact {
-    font-size: 12px;
+    font-size: 13px;
+    width: 81%;
+    top: -34px;
+    padding-top: 34px;
+    height: 129px;
   }
 
   .navbar-contact .contact-item img {
-    width: 20px;
+    width: 15px;
   }
 
   .nav-menu {
@@ -439,7 +449,7 @@
   }
 
   .user-icon{
-    margin-top: 90px;
+    margin-top: 136px;
   }
 
   .dropdown-menu{
@@ -452,12 +462,12 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    font-size: 12px;
+    font-size: 13px;
     padding-left: 10px;
   }
 
   .contact-item img {
-    width: 15px;
+    width: 9px;
     margin-top: 3px;
   }
 
