@@ -67,6 +67,14 @@ const Hero = () => {
           <Link to="/product" className="learn-more-button">Discover More</Link>
         </div>
       </div>
+      <div className="slider-item">
+        <img  src="/images/storey.jpg" alt="Carneiz Store" className="slider-image" loading="lazy" />
+        <div className="slider-text">
+          <h2>Carneiz – Your Home for Fresh Meat & Exotic Spices</h2>
+          <p>  You can shop online or visit us at 17 MCC/Uratta Road, Ikenegbu, Owerri, Imo State.</p>
+          <Link to="/product" className="learn-more-button">Shop Now</Link>
+        </div>
+      </div>
     </Slider>
   );
 }
