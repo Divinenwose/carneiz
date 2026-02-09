@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./footer.css";
 import Logo from '../../assets/logo.png';
 
+const year = new Date().getFullYear();
+
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -42,7 +44,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2025 Carneiz. All rights reserved.</p>
+        <p>&copy; {year} Carneiz. All rights reserved.</p>
       </div>
     </footer>
   );
